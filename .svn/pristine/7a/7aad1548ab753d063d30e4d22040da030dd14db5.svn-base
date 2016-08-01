@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+}
+
+@section MainContent{
+
+    <h2>Index</h2>
+
+}

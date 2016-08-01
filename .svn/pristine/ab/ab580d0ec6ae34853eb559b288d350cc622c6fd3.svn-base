@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminBaseMaster.cshtml";
+}
+@RenderSection("AjaxJavascriptInclude", required: false)
+<div id="spinner" class="spinner" style="display: none;">
+    <img id="img-spinner" src="~/img/ajax-loader.gif" alt="Loading" />
+</div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </a><a class="brand" href="/">Plus 54 | Porfolio - Admin</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="/admin"><i class="icon-home icon-white"></i>Home</a></li>
+                    <li><a href="@Url.Action("index","project")">Projects</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Properties
+                        <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("index","technology")">Technologies</a></li>
+                            <li><a href="@Url.Action("index","socialmedia")">Social Media</a></li>
+                            <li><a href="@Url.Action("index","projecttype")">Project Types</a></li>
+                            <li><a href="@Url.Action("index","projectcategory")">Project Categories</a></li>
+                            <li><a href="@Url.Action("index","screensupport")">Screen Support</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="pull-right">
+                    <ul class="nav pull-right">
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome,@{Html.RenderAction("ShowCurrentUser", "Home");}
+                            <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/admin/Home/Logout" id="aLogout"><i class="icon-off"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="modal small hide fade" id="bulkDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×</button>
+            <h3 id="deleteModalLabel">Delete Confirmation</h3>
+        </div>
+        <input id="deleteModalId" type="hidden" value="" />
+        <div class="modal-body">
+            <p class="error-text">
+                Are you sure you want to delete all selected items?<br>
+                WARNING: This operation can not be undone and important information could be lost.
+            </p>
+            <p id="bulkDeleteMoreInfo" class="error-text">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger clickedButton" data-dismiss="modal" onclick="javascript:confirmBulkDelete(); return false;">Confirm Delete</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="javascript:cancelDelete(); return false;">Cancel</button>
+        </div>
+    </div>
+    <div class="modal small hide fade" id="exportPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="exportModalLabel">Export Confirmation</h3>
+        </div>
+        <input id="exportModalId" type="hidden" value="" />
+        <div class="modal-body">
+            <p class="error-text">
+                @Html.Raw(string.Format("Are you sure you want to export this {0}?", Html.Raw(ViewBag.EntityName)))
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-danger clickedButton" data-dismiss="modal" onclick="javascript:bulkExport(); return false;">Confirm Export</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span9 offset2">
+            <div class="tabbable">
+                @RenderSection("MainContent")
+            </div>
+        </div>
+    </div>
+    <hr>
+    <footer>
+        <p>&copy; Copyright @DateTime.Now.Year - Plus 54 | Porfolio</p>
+    </footer>
+</div>
+<!-- /container -->
+@RenderSection("JavaScript", required: false)
+

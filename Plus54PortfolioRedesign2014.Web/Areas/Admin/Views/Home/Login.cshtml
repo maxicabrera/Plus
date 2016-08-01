@@ -1,0 +1,67 @@
+﻿@*@model Web.Models.UserLoginModel*@
+@{
+    ViewBag.Title = "Login";
+    Layout = Request.IsAjaxRequest() || ViewContext.Controller.ControllerContext.IsChildAction ? "~/Areas/Admin/Views/Shared/_emptyLayout.cshtml" : "~/Areas/Admin/Views/Shared/_MasterLogin.cshtml";
+}
+@section Javascript{
+    @Scripts.Render("~/bundles/LoginJS")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/TabsJS")
+}
+@section MainContent{
+    <div class="container">
+        <div class="row">
+            <div id="loginBox" class="span4 offset4 well">
+                <legend>Login</legend>
+                <div id="errorPlaceHolder" style="display: none;">
+                    @Html.ValidationSummary()
+                    <a class="close" data-dismiss="alert" href="#">×</a>Error Message
+                </div>
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "loginForm" }))
+                {
+                    <div class="editor-field">
+                        @Html.TextBox("txtEmail", "", new { @class = "span4", placeholder = "Email", id = "email" })
+                        @*@Html.TextBoxFor(model => model.Email, new { @class = "span4", placeholder = "Email", id = "email" })*@
+                        @*@Html.ValidationMessageFor(model => model.Email)*@
+                    </div>
+                    <div class="editor-field">
+                        @Html.Password("txtPass", "", new { @class = "span4", placeholder = "Password", id = "password" })
+                        @*@Html.PasswordFor(model => model.Password, new { @class = "span4", placeholder = "Password", id = "password" })*@
+                        @* @Html.ValidationMessageFor(model => model.Password)*@
+                    </div>
+                    <div>
+                        <p style="text-align: center">
+                            @Html.CheckBox("chkRemember") Remember Me
+                        </p>
+                        @*@Html.CheckBoxFor(model => model.RememberMe) Remember Me</p>*@
+                    </div>
+@*<button type="submit" name="submit" class="btn btn-info btn-block clickedButton">@Plus54PortfolioRedesign2014.Web.ResourcesHelper.GetMessageFromResource("Login_Button", typeof(Plus54PortfolioRedesign2014.Resources.resources.admin.views.Home.Login_res))</button>*@
+                    <button type="submit" name="submit" class="btn btn-info btn-block clickedButton">Submit</button>
+                    <br />
+                    <p>
+                        <a href="#" id="btn-forgot-pass">Forgot Password</a>
+                        @*                        <a href="#" id="btn-forgot-pass">@Plus54PortfolioRedesign2014.Web.ResourcesHelper.GetMessageFromResource("ForgotPassword_Link", typeof(Plus54PortfolioRedesign2014.Resources.resources.admin.views.Home.Login_res))</a>*@
+                    </p>
+                }
+            </div>
+            <div id="resetPass" class="span4 offset4 well hide" style="display: none">
+                <legend>Reset Password</legend>
+                <p>Reset password.....</p>
+                <div id="messagePlaceHolder" style="display: none;">
+                </div>
+                <div id="errorPlaceHolderResetPassword" style="display: none;">
+                </div>
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "forgotPassword" }))
+                {
+                    @Html.TextBox("txtReset", "", new { @class = "span4", placeholder = "Email", id = "usernameForgotPassword" })
+@*@Html.TextBoxFor(model => model.Email, new { @class = "span4", placeholder = "Email", id = "usernameForgotPassword" })*@
+@*@Html.ValidationMessageFor(model => model.Email)*@
+                    <button type="submit" name="resetPassword" id="resetPassword" class="btn btn-info clickedButton">Submit</button>
+                    <button id="btn-cancel-recover" class="btn btn-inverse">Cancel</button>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+

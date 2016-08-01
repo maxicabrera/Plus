@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section body {
+    <section id="login" role="main">
+        <video autoplay loop poster="../img/login-bg.jpg" id="bgvid" class="hide-for-small">
+            <source src="../video/introduction.webm" type="video/webm">
+            <source src="../video/introduction.mp4" type="video/mp4">
+        </video>
+        <div class="noise">
+            <div class="row">
+                <div class="small-12 medium-7 large-7 large-centered medium-centered columns">
+                    <h3>We strive for excellence</h3>
+                    <p>in multi-platform digital development</p>
+
+                    <div class="box-home">
+                        <div class="small-12 medium-12 large-6 column">
+                            <div class="">
+                                <a href="/">
+                                    <img src="../img/ico-case-studies.png" alt="CASE STUDIES">
+                                    <span>case studies</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="small-12 medium-12 large-6 column">
+                            <div class="">
+                                <a href="/">
+                                    <img src="../img/ico-showcase.png" alt="SHOWCASE">
+                                    <span>showcase</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+}

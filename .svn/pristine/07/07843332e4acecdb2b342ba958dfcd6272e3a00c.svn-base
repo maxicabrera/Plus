@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc4232ac616a480aa581a580d543488f" Name="Diagram1" >
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.PortfolioImage" Width="6.75" PointX="7.125" PointY="0.625" />
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.Project" Width="3.125" PointX="9" PointY="3.125" />
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.Client" Width="1.5" PointX="11.375" PointY="8.625" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_Thumbnail" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_SliderImages" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_Client" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.Partner" Width="1.5" PointX="9.125" PointY="8.375" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_Partner" />
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.Technology" Width="1.5" PointX="7" PointY="3.25" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Technology_Thumbnail" />
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.SocialMedia" Width="1.5" PointX="5.25" PointY="3.25" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_SocialMedia_Thumbnail" />
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.ProjectCategory" Width="1.5" PointX="3.5" PointY="3.25" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_ProjectCategory_Thumbnail" />
+        <AssociationConnector ManuallyRouted="false" Association="Plus54PortfolioRedesign2014Model.FK_Project_Technologies">
+        </AssociationConnector>
+        <AssociationConnector ManuallyRouted="false" Association="Plus54PortfolioRedesign2014Model.FK_Project_SocialMedia">
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.ProjectTypeTag" Width="1.5" PointX="1.75" PointY="3.25" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_ProjectTypeTag" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_SiteLogo" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_ProjectCategory" />
+        <EntityTypeShape EntityType="Plus54PortfolioRedesign2014Model.ScreenSupport" Width="1.5" PointX="1.125" PointY="0.75" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_ScreenSupport_Thumbnail" />
+        <AssociationConnector Association="Plus54PortfolioRedesign2014Model.FK_Project_ScreenSupport" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

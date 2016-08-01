@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus54PortfolioRedesign2014.Web", "Plus54PortfolioRedesign2014.Web\Plus54PortfolioRedesign2014.Web.csproj", "{58C335AB-4596-4643-B915-1D479BB1092C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus54PortfolioRedesign2014.Test", "Plus54PortfolioRedesign2014.Test\Plus54PortfolioRedesign2014.Test.csproj", "{596C026D-11AD-41E8-8FDA-BE5295F29692}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus54PortfolioRedesign2014.Resources", "Plus54PortfolioRedesign2014.Resources\Plus54PortfolioRedesign2014.Resources.csproj", "{DECBBD28-E0E3-4910-92BA-E7D1B88FCC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus54PortfolioRedesign2014.Entities", "Plus54PortfolioRedesign2014.Entities\Plus54PortfolioRedesign2014.Entities.csproj", "{A8ABBA10-1028-4300-A235-F086DE004719}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus54PortfolioRedesign2014.Common", "Plus54PortfolioRedesign2014.Common\Plus54PortfolioRedesign2014.Common.csproj", "{49F2A323-5717-4437-9C00-3C2C76FDEE2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus54PortfolioRedesign2014.BusinessLogic", "Plus54PortfolioRedesign2014.BusinessLogic\Plus54PortfolioRedesign2014.BusinessLogic.csproj", "{ED4827AF-498C-4773-9C96-3E8D5D77B257}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DF2622AD-E2E7-46EF-90D5-B6D585FAED25}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58C335AB-4596-4643-B915-1D479BB1092C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C335AB-4596-4643-B915-1D479BB1092C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C335AB-4596-4643-B915-1D479BB1092C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C335AB-4596-4643-B915-1D479BB1092C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596C026D-11AD-41E8-8FDA-BE5295F29692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596C026D-11AD-41E8-8FDA-BE5295F29692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596C026D-11AD-41E8-8FDA-BE5295F29692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596C026D-11AD-41E8-8FDA-BE5295F29692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DECBBD28-E0E3-4910-92BA-E7D1B88FCC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DECBBD28-E0E3-4910-92BA-E7D1B88FCC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DECBBD28-E0E3-4910-92BA-E7D1B88FCC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DECBBD28-E0E3-4910-92BA-E7D1B88FCC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8ABBA10-1028-4300-A235-F086DE004719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8ABBA10-1028-4300-A235-F086DE004719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8ABBA10-1028-4300-A235-F086DE004719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8ABBA10-1028-4300-A235-F086DE004719}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F2A323-5717-4437-9C00-3C2C76FDEE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F2A323-5717-4437-9C00-3C2C76FDEE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F2A323-5717-4437-9C00-3C2C76FDEE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F2A323-5717-4437-9C00-3C2C76FDEE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED4827AF-498C-4773-9C96-3E8D5D77B257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4827AF-498C-4773-9C96-3E8D5D77B257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4827AF-498C-4773-9C96-3E8D5D77B257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4827AF-498C-4773-9C96-3E8D5D77B257}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

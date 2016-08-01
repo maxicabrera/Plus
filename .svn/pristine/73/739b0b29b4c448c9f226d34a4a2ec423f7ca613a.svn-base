@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\Plus54PortfolioRedesign2014.BusinessLogic\packages.config" />
+  <repository path="..\Plus54PortfolioRedesign2014.Entities\packages.config" />
+  <repository path="..\Plus54PortfolioRedesign2014.Test\packages.config" />
+  <repository path="..\Plus54PortfolioRedesign2014.Web\packages.config" />
+</repositories>

@@ -1,0 +1,420 @@
+/*globals angular,alert,console,Grid,jQuery*/
+(function($) {
+    'use strict';
+
+    /*** Angular Application ***/
+    var app = angular.module('portfolio', []);
+
+    //Windows Size
+    app.windowsize = $(window).width();
+    app.pageSize = 6;
+
+    /* Search Controller */
+    app.controller('ProjectsController', ['$scope', '$http', '$timeout',
+        function($scope, $http, $timeout) {
+
+            $scope.loadingAnimation = true;
+            $scope.moreResults = true;
+
+            //Searh Initial Conditions
+            $scope.resultsUrl = "../ProjectAjax/GetAllByFilterAndData";
+            $scope.params = {
+                pageNumber: 1,
+                pageSize: app.pageSize,
+                technologies: [],
+                proyectTypes: [],
+                keywords: ""
+            };
+
+            //Hide Results Bar
+            $scope.showBar = false;
+
+            //Define Search Function and rtigger it inmediatly
+            $scope.search = function() {
+                $scope.loadingAnimation = true;
+                $scope.params.pageNumber = 1;
+                // console.log($scope.params);
+                //Retrieve results
+                $http({
+                    method: "GET",
+                    url: $scope.resultsUrl,
+                    params: $scope.params
+                }).then(function(response) {
+                        //console.log(response);
+                        $scope.projects = response.data.results;
+                        $scope.resultsCount = response.data.total;
+                        $scope.loadingAnimation = false;
+                        if (response.data.results.length === response.data.total) {
+                            $scope.moreResults = false;
+                        } else {
+                            $scope.moreResults = true;
+                        }
+                    },
+                    function(response) {
+                        console.log("HTTP Error");
+                        console.log(response);
+                    });
+
+            };
+
+            //Fetch Initial Projects
+            $scope.search();
+            //END of onload instructions
+
+            //Submit Search or Filter
+            $scope.submit = function() {
+                $scope.keyword = $('#searchInput').val();
+
+                //We need to move away details-block or we will loose it when new data arrives
+                $(".details-block").insertAfter('#search-results');
+                $(".details-block").hide();
+
+                $scope.params.keywords = $('#searchInput').val();
+
+                //Show Results Bar
+                $scope.showBar = true;
+                $scope.search();
+            };
+
+            //Back to Showcase button hanlder - Clear filtes
+            $scope.backToShowcase = function() {
+
+                $scope.loadingAnimation = true;
+                $scope.moreResults = true;
+                $scope.setAllType();
+                $scope.setAllTech();
+
+
+                //Searh Initial Conditions
+                $scope.params = {
+                    pageNumber: 1,
+                    pageSize: app.pageSize,
+                    technologies: [],
+                    proyectTypes: [],
+                    keywords: ""
+                };
+
+                //Hide Results Bar
+                $scope.showBar = false;
+
+                //We need to move away details-block or we will loose it when new data arrives
+                $(".details-block").insertAfter('#search-results');
+                $(".details-block").hide();
+
+                //tech
+                $('#title-tech').html('Technology  <em class="arrow"></em>');
+
+                //project
+                $('#title-type').html('Project type <em class="arrow"></em>');
+
+                $scope.search();
+            };
+
+            //Show Type filter items
+            $scope.showTypeItems = function(container) {
+                var contentElms = $('.filter-content'),
+                    filterContent = $('#' + container);
+
+                //Toggle styles
+                $scope.typeActive = !$scope.typeActive;
+                $scope.techActive = false;
+
+                //Show the request content
+                filterContent.slideToggle();
+
+                //Hide others open contents
+                contentElms.not(filterContent).slideUp();
+
+            };
+
+            //Show Technology filter items
+            $scope.showTechItems = function(container) {
+                var contentElms = $('.filter-content'),
+                    filterContent = $('#' + container);
+
+                //Change the title style
+                $scope.techActive = !$scope.techActive;
+                $scope.typeActive = false;
+
+                //Show the request content
+                filterContent.slideToggle();
+
+                //Hide others open contents
+                contentElms.not(filterContent).slideUp();
+
+
+            };
+
+            //Click All Type Filter
+            $scope.setAllType = function() {
+                $scope.params.proyectTypes = [];
+                $scope.search();
+                $('.filter-content').slideUp();
+            };
+
+            //Click All Tech Filter
+            $scope.setAllTech = function() {
+                $scope.params.technologies = [];
+                $scope.search();
+                $('.filter-content').slideUp();
+            };
+
+            //Click on Type Filter item
+            $scope.changeType = function(value, name) {
+
+                $scope.params.proyectTypes = [value];
+                $scope.search();
+
+                $('.filter-content').slideUp();
+
+
+            };
+
+            //Click on Tech Filter item
+            $scope.changeTech = function(value) {
+
+                $scope.params.technologies = [value];
+                $scope.search();
+
+                $('.filter-content').slideUp();
+            };
+
+            //Show More Functionality
+            $scope.showMore = function() {
+                $scope.params.pageNumber = $scope.params.pageNumber + 1;
+                $scope.loadingAnimation = true;
+                $http({
+                    method: "GET",
+                    url: $scope.resultsUrl,
+                    params: $scope.params
+                }).then(function(response) {
+
+                        $scope.projects = $scope.projects.concat(response.data.results);
+                        $scope.loadingAnimation = false;
+
+                        if ($scope.projects.length === response.data.total) {
+                            $scope.moreResults = false;
+                        }
+
+                    },
+                    function(response) {
+                        // console.log("HTTP Error");
+                        // console.log(response);
+                    });
+            };
+
+            //Close Details popup
+            $scope.closeDetailsBlock = function() {
+                $(".details-block").slideUp();
+                $(".triangle-arrow-up").fadeOut();
+                // $("#og-grid").children("li").find("img").removeClass("obscureImage");
+                $scope.projectDetails.id = undefined;
+            };
+
+            //Generate Details Block and Show it below Project thumbnail
+            $scope.showDetails = function(project) {
+
+                // If already shown then close it and return
+                if (($scope.projectDetails) && $scope.projectDetails.id === project.id) {
+                    $scope.closeDetailsBlock();
+                    return;
+                }
+
+                var container = $('#og-grid'),
+                    boxes = container.children('li'),
+                    boxSize = boxes.first().outerWidth(true),
+                    contentSize = container.outerWidth(),
+                    elementsInRow = Math.floor(contentSize / boxSize),
+                    activeBoxPositionNumber = 0,
+                    $selectedElement;
+
+
+                for (var i = 0; i < boxes.length; i++) {
+                    if ($(boxes[i]).data("projectid") === project.id) {
+                        activeBoxPositionNumber = i;
+                        $selectedElement = $(boxes[i]);
+                    }
+                }
+
+                //Is not Index, is position number starting with 1, so we need to add 1
+                activeBoxPositionNumber++;
+
+
+                var activeRow = Math.ceil(activeBoxPositionNumber / elementsInRow),
+                    lastElementInRowIndex = (Math.floor(activeRow * elementsInRow)) - 1;
+
+                //All the above calculations just to get the last box in row to insert the details panel after it
+                var $lastBoxInRowElement = $(boxes[lastElementInRowIndex]),
+                    offsetHeight = $selectedElement.outerHeight(true) * 0.9,
+                    scrolltoheight = $selectedElement.offset().top + offsetHeight,
+                    selectedElement = $selectedElement.offset().top;
+
+                //scroll to image Top
+                if (app.windowsize > 767) {
+                    $('html, body').animate({
+                        scrollTop: selectedElement
+                    }, 200);
+                } else {
+                    $('html, body').animate({
+                        scrollTop: (selectedElement - 50) 
+                    }, 200);
+                }
+                console.log(offsetHeight);
+
+
+
+                //hide if it was previously shown
+                $(".details-block").hide();
+                $(".triangle-arrow-up").hide();
+
+
+
+                //get Project Details vis AJAX and fill up the details-block Before inserting it
+                $http({
+                    method: "GET",
+                    url: "../ProjectAjax/Get?idProject=" + project.id
+                })
+                    .success(function(data) {
+
+                        // console.log(data);
+
+                        //Injecting the new details so the details block can be populated via Angujar
+                        $scope.projectDetails = data;
+
+                        //insert after Last box in row always
+                        $(".details-block").insertAfter($lastBoxInRowElement);
+
+                        //Preparing Slick Slider
+                        //Destroying previously Sliders
+                        if ($('.og-fullimg').hasClass('slick-initialized')) {
+                            $('.og-fullimg').slick('unslick');
+                        }
+                        $('.og-fullimg').empty();
+                        $('.og-slider-dots').empty();
+
+                        //If Project has more than one image the initialized Slick Slider
+                        if (data.image_large.length > 1) {
+
+                            //For each Slider Image create the HTML
+                            data.image_large.forEach(function(largeUrl) {
+                                //Add image to Slick and dots
+                                $('.og-fullimg').append('<div><img src="' + largeUrl + '" /></div>');
+                                $('.og-slider-dots').append('<li><button></button></li>');
+                            });
+
+                            //Init slider
+                            $('.og-fullimg').slick({
+                                // lazyLoad: 'progressive',
+                                // prevArrow: '<button type="button" class="slick-prev"></button>',
+                                // nextArrow: '<button type="button" class="slick-next"></button>'
+                                arrows: false,
+                                lazyLoad: 'ondemand',
+                            });
+
+                            //Dots custom logic
+                            //dots array used in the next 2 functions
+                            var dots = $('.og-slider-dots').children('li');
+
+                            //bind dots click events
+                            dots.on('click', function() {
+                                var slideToGoIndex = $.inArray(this, dots);
+                                $('.og-fullimg').slick('slickGoTo', slideToGoIndex);
+                            });
+
+                            //update dots when using arrows or swiping
+                            $('.og-fullimg').on('afterChange', function(slick, currentSlide) {
+                                dots.removeClass("active");
+                                $(dots[currentSlide.currentSlide]).addClass("active");
+                            });
+
+                            //Start in slide 0
+                            $('.og-fullimg').slick('slickGoTo', 0);
+
+                        } else {
+                            //Project has only one image
+                            $('.og-fullimg').append('<div><img src="' + data.image_large[0] + '" /></div>');
+                        }
+
+                        //Fill up Technologies and Social Icons
+                        $('.detail-techs').empty();
+                        $('.detail-social').empty();
+                        //For each Technology
+                        data.technologies_img.forEach(function(techUrl) {
+                            //Add image
+                            $('.detail-techs').append('<img src="' + techUrl + '" />');
+                        });
+                        //For each ScreenSupport
+                        data.category_img.forEach(function(catUrl) {
+                            //Add image
+                            $('.detail-techs').append('<img src="' + catUrl + '" />');
+                        });
+                        //For each Social
+                        if (data.social_img && data.social_img.length > 0) {
+                          data.social_img.forEach(function(socialUrl) {
+                            //Add image
+                            $('.detail-social').append('<img src="' + socialUrl + '" />');
+                          });
+                          $('.social-media-container').show();
+                        }
+                        else
+                        {
+                            $('.social-media-container').hide();
+                        }
+
+
+                        //Finally show the details-block and custom triangle Arrow
+                        $('.details-block').slideDown();
+                        $selectedElement.addClass('active');
+                        $selectedElement.find('.triangle-arrow-up').fadeIn();
+
+                    })
+                    .error(function(err) {
+                        console.log("HTTP Error: ");
+                        console.log(err);
+                    });
+
+            };
+
+           
+            var header = $('header'),
+                headerHeight = header.outerHeight(true),
+                filtersNav = $('#form-filters'),
+                filtersNavPosition = filtersNav.offset().top - 250;
+
+
+            $(window).scroll(function () {
+                if (app.windowsize > 767 && $(this).scrollTop() > 30) {
+                    header.addClass("sticky");
+                } else {
+                    header.removeClass("sticky");
+                }
+
+                if ($(this).scrollTop() > filtersNavPosition) {
+                    filtersNav.addClass("sticky");
+                    if (app.windowsize > 767) {
+                        filtersNav.css('top', headerHeight);
+                    }                    
+                } else {
+                    filtersNav.removeClass("sticky");
+                    if (app.windowsize > 767) {
+                        filtersNav.css('top', 0);
+                    }
+                }
+            });
+
+            $('.filter-content ul li span').on('click', function(){
+                var name = $(this).text(),
+                    listName = $(this).parent().parent().parent().siblings('.filter-title');
+
+                    listName.html(name + '<em class="arrow"></em>');
+            });
+
+
+
+
+
+
+        }
+    ]);
+
+}(jQuery));

@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Plus54PortfolioRedesign2014.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UploaderHandlerFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">../../Upload/UploadHandler.ashx</Value>
+    </Setting>
+    <Setting Name="TempFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Media/Temp/</Value>
+    </Setting>
+    <Setting Name="AllowImagesExtensions" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/(\.|\/)(jpe?g|png)$/i</Value>
+    </Setting>
+    <Setting Name="TechnologyFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Media/Technology/</Value>
+    </Setting>
+    <Setting Name="ProjectCategoryFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Media/ProjectCategory/</Value>
+    </Setting>
+    <Setting Name="SocialMediaFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Media/SocialMedia/</Value>
+    </Setting>
+    <Setting Name="ProjectFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Media/Project/</Value>
+    </Setting>
+    <Setting Name="ScreenSupport" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Media/ScreenSupport/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section body {
+    @if (ViewBag.LoginError != null)
+    {
+        <script type="text/javascript">
+            var loginError = true;
+        </script>
+    }
+    <section id="login">
+        <video autoplay loop poster="img/login-bg.jpg" id="bgvid" class="hide-for-small">
+            <source src="../video/introduction.webm" type="video/webm">
+            <source src="../video/introduction.mp4" type="video/mp4">
+        </video>
+        <div class="noise">
+            <div class="row">
+                <div class="small-12 medium-7 large-7 large-centered medium-centered columns">
+                    <h3>We strive for excellence</h3>
+                    <p>in multi-platform digital development</p>
+
+                    <div class="box-login">
+                        <div class="title">
+                            <h4>client log in</h4>
+                        </div>
+                        <form method="POST" action="/Home/Login" data-abide>
+                            <div class="row collapse">
+                                <div class="small-12 medium-12 large-12 columns">
+                                    <span id="error" class="hide">Username or password is incorrect.</span>
+                                </div>
+                                <div class="small-12 medium-5 large-5 columns">
+                                    <input type="text" placeholder="User" name="user" class="user" required>
+                                </div>
+                                <div class="small-12 medium-5 large-5 columns">
+                                    <input type="password" placeholder="Password" name="password" class="password" required>
+                                </div>
+                                <div class="small-4 medium-2 large-2 columns">
+                                    <input type="submit" value="enter">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+}

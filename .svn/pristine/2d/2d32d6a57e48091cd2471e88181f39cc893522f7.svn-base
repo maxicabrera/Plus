@@ -1,0 +1,6 @@
+﻿@{
+    ViewBag.Title = "Social Media Page";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTabbedMaster.cshtml";
+    ViewBag.EntityName = "Social Media";
+    ViewBag.EntityPath = "SocialMedia";
+}

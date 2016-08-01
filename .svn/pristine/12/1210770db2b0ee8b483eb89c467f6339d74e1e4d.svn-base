@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Plus54PortfolioRedesign2014Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Plus54PortfolioRedesign2014ModelStoreContainer">
+    <EntitySet Name="PortfolioImage" EntityType="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="Plus54PortfolioRedesign2014Model.Store.Project" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Client" EntityType="Plus54PortfolioRedesign2014Model.Store.Client" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Partner" EntityType="Plus54PortfolioRedesign2014Model.Store.Partner" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Technology" EntityType="Plus54PortfolioRedesign2014Model.Store.Technology" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SocialMedia" EntityType="Plus54PortfolioRedesign2014Model.Store.SocialMedia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectCategory" EntityType="Plus54PortfolioRedesign2014Model.Store.ProjectCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectTypeTag" EntityType="Plus54PortfolioRedesign2014Model.Store.ProjectTypeTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ScreenSupport" EntityType="Plus54PortfolioRedesign2014Model.Store.ScreenSupport" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_Project_Technologies" EntityType="Plus54PortfolioRedesign2014Model.Store.FK_Project_Technologies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_Project_SocialMedia" EntityType="Plus54PortfolioRedesign2014Model.Store.FK_Project_SocialMedia" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_Project_ProjectTypeTag" EntityType="Plus54PortfolioRedesign2014Model.Store.FK_Project_ProjectTypeTag" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_Project_ProjectCategory" EntityType="Plus54PortfolioRedesign2014Model.Store.FK_Project_ProjectCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FK_Project_ScreenSupport" EntityType="Plus54PortfolioRedesign2014Model.Store.FK_Project_ScreenSupport" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Project_Thumbnail" Association="Plus54PortfolioRedesign2014Model.Store.FK_Project_Thumbnail">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_SliderImages" Association="Plus54PortfolioRedesign2014Model.Store.FK_Project_SliderImages">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Client" Association="Plus54PortfolioRedesign2014Model.Store.FK_Project_Client">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_Partner" Association="Plus54PortfolioRedesign2014Model.Store.FK_Project_Partner">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="Partner" EntitySet="Partner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Technology_Thumbnail" Association="Plus54PortfolioRedesign2014Model.Store.FK_Technology_Thumbnail">
+      <End Role="Technology" EntitySet="Technology" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SocialMedia_Thumbnail" Association="Plus54PortfolioRedesign2014Model.Store.FK_SocialMedia_Thumbnail">
+      <End Role="SocialMedia" EntitySet="SocialMedia" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectCategory_Thumbnail" Association="Plus54PortfolioRedesign2014Model.Store.FK_ProjectCategory_Thumbnail">
+      <End Role="ProjectCategory" EntitySet="ProjectCategory" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_Technologies_Project" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_Technologies_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="FK_Project_Technologies" EntitySet="FK_Project_Technologies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_Technologies_Technology" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_Technologies_Technology">
+      <End Role="Technology" EntitySet="Technology" />
+      <End Role="FK_Project_Technologies" EntitySet="FK_Project_Technologies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_SocialMedia_Project" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_SocialMedia_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="FK_Project_SocialMedia" EntitySet="FK_Project_SocialMedia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_SocialMedia_SocialMedia" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_SocialMedia_SocialMedia">
+      <End Role="SocialMedia" EntitySet="SocialMedia" />
+      <End Role="FK_Project_SocialMedia" EntitySet="FK_Project_SocialMedia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_ProjectTypeTag_Project" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_ProjectTypeTag_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="FK_Project_ProjectTypeTag" EntitySet="FK_Project_ProjectTypeTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_ProjectTypeTag_ProjectTypeTag" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_ProjectTypeTag_ProjectTypeTag">
+      <End Role="ProjectTypeTag" EntitySet="ProjectTypeTag" />
+      <End Role="FK_Project_ProjectTypeTag" EntitySet="FK_Project_ProjectTypeTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Project_SiteLogo" Association="Plus54PortfolioRedesign2014Model.Store.FK_Project_SiteLogo">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_ProjectCategory_Project" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_ProjectCategory_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="FK_Project_ProjectCategory" EntitySet="FK_Project_ProjectCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_ProjectCategory_ProjectCategory" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_ProjectCategory_ProjectCategory">
+      <End Role="ProjectCategory" EntitySet="ProjectCategory" />
+      <End Role="FK_Project_ProjectCategory" EntitySet="FK_Project_ProjectCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScreenSupport_Thumbnail" Association="Plus54PortfolioRedesign2014Model.Store.FK_ScreenSupport_Thumbnail">
+      <End Role="ScreenSupport" EntitySet="ScreenSupport" />
+      <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_ScreenSupport_Project" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_ScreenSupport_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="FK_Project_ScreenSupport" EntitySet="FK_Project_ScreenSupport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FK_Project_ScreenSupport_ScreenSupport" Association="Plus54PortfolioRedesign2014Model.Store.FK_FK_Project_ScreenSupport_ScreenSupport">
+      <End Role="ScreenSupport" EntitySet="ScreenSupport" />
+      <End Role="FK_Project_ScreenSupport" EntitySet="FK_Project_ScreenSupport" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PortfolioImage">
+    <Key>
+      <PropertyRef Name="IdImage" />
+    </Key>
+    <Property Name="IdImage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Path" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Height" Type="int" Nullable="false" />
+    <Property Name="Width" Type="int" Nullable="false" />
+    <Property Name="FK_Project_SliderImages_PortfolioImage_IdProject" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="IdProject" />
+    </Key>
+    <Property Name="IdProject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Overview" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Url" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Thumbnail_IdImage" Type="int" Nullable="false" />
+    <Property Name="Client_IdClient" Type="int" Nullable="false" />
+    <Property Name="Partner_IdPartner" Type="int" Nullable="false" />
+    <Property Name="SiteLogo_IdImage" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="IdPartner" />
+    </Key>
+    <Property Name="IdPartner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Technology">
+    <Key>
+      <PropertyRef Name="IdTechnology" />
+    </Key>
+    <Property Name="IdTechnology" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Thumbnail_IdImage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SocialMedia">
+    <Key>
+      <PropertyRef Name="IdSocialMedia" />
+    </Key>
+    <Property Name="IdSocialMedia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Thumbnail_IdImage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectCategory">
+    <Key>
+      <PropertyRef Name="IdProjectCategory" />
+    </Key>
+    <Property Name="IdProjectCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Thumbnail_IdImage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectTypeTag">
+    <Key>
+      <PropertyRef Name="IdProjectTypeTag" />
+    </Key>
+    <Property Name="IdProjectTypeTag" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ScreenSupport">
+    <Key>
+      <PropertyRef Name="IdScreenSupport" />
+    </Key>
+    <Property Name="IdScreenSupport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Thumbnail_IdImage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_Project_Technologies">
+    <Key>
+      <PropertyRef Name="Projects_IdProject" />
+      <PropertyRef Name="Technologies_IdTechnology" />
+    </Key>
+    <Property Name="Projects_IdProject" Type="int" Nullable="false" />
+    <Property Name="Technologies_IdTechnology" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_Project_SocialMedia">
+    <Key>
+      <PropertyRef Name="Projects_IdProject" />
+      <PropertyRef Name="SocialMedia_IdSocialMedia" />
+    </Key>
+    <Property Name="Projects_IdProject" Type="int" Nullable="false" />
+    <Property Name="SocialMedia_IdSocialMedia" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_Project_ProjectTypeTag">
+    <Key>
+      <PropertyRef Name="Projects_IdProject" />
+      <PropertyRef Name="ProjectTypeTags_IdProjectTypeTag" />
+    </Key>
+    <Property Name="Projects_IdProject" Type="int" Nullable="false" />
+    <Property Name="ProjectTypeTags_IdProjectTypeTag" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_Project_ProjectCategory">
+    <Key>
+      <PropertyRef Name="Projects_IdProject" />
+      <PropertyRef Name="ProjectCategory_IdProjectCategory" />
+    </Key>
+    <Property Name="Projects_IdProject" Type="int" Nullable="false" />
+    <Property Name="ProjectCategory_IdProjectCategory" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FK_Project_ScreenSupport">
+    <Key>
+      <PropertyRef Name="Projects_IdProject" />
+      <PropertyRef Name="ScreenSupport_IdScreenSupport" />
+    </Key>
+    <Property Name="Projects_IdProject" Type="int" Nullable="false" />
+    <Property Name="ScreenSupport_IdScreenSupport" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Project_Thumbnail">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="*" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PortfolioImage">
+        <PropertyRef Name="IdImage" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Thumbnail_IdImage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_SliderImages">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="0..1" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="IdProject" />
+      </Principal>
+      <Dependent Role="PortfolioImage">
+        <PropertyRef Name="FK_Project_SliderImages_PortfolioImage_IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Client">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="*" />
+    <End Role="Client" Type="Plus54PortfolioRedesign2014Model.Store.Client" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Client_IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_Partner">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="*" />
+    <End Role="Partner" Type="Plus54PortfolioRedesign2014Model.Store.Partner" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Partner">
+        <PropertyRef Name="IdPartner" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="Partner_IdPartner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Technology_Thumbnail">
+    <End Role="Technology" Type="Plus54PortfolioRedesign2014Model.Store.Technology" Multiplicity="*" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PortfolioImage">
+        <PropertyRef Name="IdImage" />
+      </Principal>
+      <Dependent Role="Technology">
+        <PropertyRef Name="Thumbnail_IdImage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SocialMedia_Thumbnail">
+    <End Role="SocialMedia" Type="Plus54PortfolioRedesign2014Model.Store.SocialMedia" Multiplicity="*" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PortfolioImage">
+        <PropertyRef Name="IdImage" />
+      </Principal>
+      <Dependent Role="SocialMedia">
+        <PropertyRef Name="Thumbnail_IdImage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectCategory_Thumbnail">
+    <End Role="ProjectCategory" Type="Plus54PortfolioRedesign2014Model.Store.ProjectCategory" Multiplicity="*" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PortfolioImage">
+        <PropertyRef Name="IdImage" />
+      </Principal>
+      <Dependent Role="ProjectCategory">
+        <PropertyRef Name="Thumbnail_IdImage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Project_SiteLogo">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="*" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PortfolioImage">
+        <PropertyRef Name="IdImage" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="SiteLogo_IdImage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScreenSupport_Thumbnail">
+    <End Role="ScreenSupport" Type="Plus54PortfolioRedesign2014Model.Store.ScreenSupport" Multiplicity="*" />
+    <End Role="PortfolioImage" Type="Plus54PortfolioRedesign2014Model.Store.PortfolioImage" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="PortfolioImage">
+        <PropertyRef Name="IdImage" />
+      </Principal>
+      <Dependent Role="ScreenSupport">
+        <PropertyRef Name="Thumbnail_IdImage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_Technologies_Project">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="1" />
+    <End Role="FK_Project_Technologies" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_Technologies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="IdProject" />
+      </Principal>
+      <Dependent Role="FK_Project_Technologies">
+        <PropertyRef Name="Projects_IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_Technologies_Technology">
+    <End Role="FK_Project_Technologies" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_Technologies" Multiplicity="*" />
+    <End Role="Technology" Type="Plus54PortfolioRedesign2014Model.Store.Technology" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Technology">
+        <PropertyRef Name="IdTechnology" />
+      </Principal>
+      <Dependent Role="FK_Project_Technologies">
+        <PropertyRef Name="Technologies_IdTechnology" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_SocialMedia_Project">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="1" />
+    <End Role="FK_Project_SocialMedia" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_SocialMedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="IdProject" />
+      </Principal>
+      <Dependent Role="FK_Project_SocialMedia">
+        <PropertyRef Name="Projects_IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_SocialMedia_SocialMedia">
+    <End Role="FK_Project_SocialMedia" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_SocialMedia" Multiplicity="*" />
+    <End Role="SocialMedia" Type="Plus54PortfolioRedesign2014Model.Store.SocialMedia" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SocialMedia">
+        <PropertyRef Name="IdSocialMedia" />
+      </Principal>
+      <Dependent Role="FK_Project_SocialMedia">
+        <PropertyRef Name="SocialMedia_IdSocialMedia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_ProjectTypeTag_Project">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="1" />
+    <End Role="FK_Project_ProjectTypeTag" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_ProjectTypeTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="IdProject" />
+      </Principal>
+      <Dependent Role="FK_Project_ProjectTypeTag">
+        <PropertyRef Name="Projects_IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_ProjectTypeTag_ProjectTypeTag">
+    <End Role="FK_Project_ProjectTypeTag" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_ProjectTypeTag" Multiplicity="*" />
+    <End Role="ProjectTypeTag" Type="Plus54PortfolioRedesign2014Model.Store.ProjectTypeTag" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectTypeTag">
+        <PropertyRef Name="IdProjectTypeTag" />
+      </Principal>
+      <Dependent Role="FK_Project_ProjectTypeTag">
+        <PropertyRef Name="ProjectTypeTags_IdProjectTypeTag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_ProjectCategory_Project">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="1" />
+    <End Role="FK_Project_ProjectCategory" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_ProjectCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="IdProject" />
+      </Principal>
+      <Dependent Role="FK_Project_ProjectCategory">
+        <PropertyRef Name="Projects_IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_ProjectCategory_ProjectCategory">
+    <End Role="FK_Project_ProjectCategory" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_ProjectCategory" Multiplicity="*" />
+    <End Role="ProjectCategory" Type="Plus54PortfolioRedesign2014Model.Store.ProjectCategory" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectCategory">
+        <PropertyRef Name="IdProjectCategory" />
+      </Principal>
+      <Dependent Role="FK_Project_ProjectCategory">
+        <PropertyRef Name="ProjectCategory_IdProjectCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_ScreenSupport_Project">
+    <End Role="Project" Type="Plus54PortfolioRedesign2014Model.Store.Project" Multiplicity="1" />
+    <End Role="FK_Project_ScreenSupport" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_ScreenSupport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="IdProject" />
+      </Principal>
+      <Dependent Role="FK_Project_ScreenSupport">
+        <PropertyRef Name="Projects_IdProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FK_Project_ScreenSupport_ScreenSupport">
+    <End Role="FK_Project_ScreenSupport" Type="Plus54PortfolioRedesign2014Model.Store.FK_Project_ScreenSupport" Multiplicity="*" />
+    <End Role="ScreenSupport" Type="Plus54PortfolioRedesign2014Model.Store.ScreenSupport" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ScreenSupport">
+        <PropertyRef Name="IdScreenSupport" />
+      </Principal>
+      <Dependent Role="FK_Project_ScreenSupport">
+        <PropertyRef Name="ScreenSupport_IdScreenSupport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Plus54PortfolioRedesign2014Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Plus54PortfolioRedesign2014Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PortfolioImage" EntityType="Plus54PortfolioRedesign2014Model.PortfolioImage" />
+          <EntitySet Name="Project" EntityType="Plus54PortfolioRedesign2014Model.Project" />
+          <EntitySet Name="Client" EntityType="Plus54PortfolioRedesign2014Model.Client" />
+          <AssociationSet Name="FK_Project_Thumbnail" Association="Plus54PortfolioRedesign2014Model.FK_Project_Thumbnail">
+            <End EntitySet="Project" Role="Project" />
+            <End EntitySet="PortfolioImage" Role="PortfolioImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_SliderImages" Association="Plus54PortfolioRedesign2014Model.FK_Project_SliderImages">
+            <End EntitySet="Project" Role="Project" />
+            <End EntitySet="PortfolioImage" Role="PortfolioImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Client" Association="Plus54PortfolioRedesign2014Model.FK_Project_Client">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <EntitySet Name="Partner" EntityType="Plus54PortfolioRedesign2014Model.Partner" />
+          <AssociationSet Name="FK_Project_Partner" Association="Plus54PortfolioRedesign2014Model.FK_Project_Partner">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <EntitySet Name="Technology" EntityType="Plus54PortfolioRedesign2014Model.Technology" />
+          <AssociationSet Name="FK_Technology_Thumbnail" Association="Plus54PortfolioRedesign2014Model.FK_Technology_Thumbnail">
+            <End Role="Technology" EntitySet="Technology" />
+            <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+          </AssociationSet>
+          <EntitySet Name="SocialMedia" EntityType="Plus54PortfolioRedesign2014Model.SocialMedia" />
+          <AssociationSet Name="FK_SocialMedia_Thumbnail" Association="Plus54PortfolioRedesign2014Model.FK_SocialMedia_Thumbnail">
+            <End Role="SocialMedia" EntitySet="SocialMedia" />
+            <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+          </AssociationSet>
+          <EntitySet Name="ProjectCategory" EntityType="Plus54PortfolioRedesign2014Model.ProjectCategory" />
+          <AssociationSet Name="FK_ProjectCategory_Thumbnail" Association="Plus54PortfolioRedesign2014Model.FK_ProjectCategory_Thumbnail">
+            <End Role="ProjectCategory" EntitySet="ProjectCategory" />
+            <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Technologies" Association="Plus54PortfolioRedesign2014Model.FK_Project_Technologies">
+            <End EntitySet="Project" Role="Project" />
+            <End EntitySet="Technology" Role="Technology" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_SocialMedia" Association="Plus54PortfolioRedesign2014Model.FK_Project_SocialMedia">
+            <End EntitySet="Project" Role="Project" />
+            <End EntitySet="SocialMedia" Role="SocialMedia" />
+          </AssociationSet>
+          <EntitySet Name="ProjectTypeTag" EntityType="Plus54PortfolioRedesign2014Model.ProjectTypeTag" />
+          <AssociationSet Name="FK_Project_ProjectTypeTag" Association="Plus54PortfolioRedesign2014Model.FK_Project_ProjectTypeTag">
+            <End EntitySet="Project" Role="Project" />
+            <End EntitySet="ProjectTypeTag" Role="ProjectTypeTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_SiteLogo" Association="Plus54PortfolioRedesign2014Model.FK_Project_SiteLogo">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_ProjectCategory" Association="Plus54PortfolioRedesign2014Model.FK_Project_ProjectCategory">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectCategory" EntitySet="ProjectCategory" />
+          </AssociationSet>
+          <EntitySet Name="ScreenSupport" EntityType="Plus54PortfolioRedesign2014Model.ScreenSupport" />
+          <AssociationSet Name="FK_ScreenSupport_Thumbnail" Association="Plus54PortfolioRedesign2014Model.FK_ScreenSupport_Thumbnail">
+            <End Role="ScreenSupport" EntitySet="ScreenSupport" />
+            <End Role="PortfolioImage" EntitySet="PortfolioImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_ScreenSupport" Association="Plus54PortfolioRedesign2014Model.FK_Project_ScreenSupport">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ScreenSupport" EntitySet="ScreenSupport" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="PortfolioImage">
+          <Key>
+            <PropertyRef Name="IdImage" />
+          </Key>
+          <Property Type="Int32" Name="IdImage" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Path" Nullable="false" Unicode="true" FixedLength="false" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" Unicode="true" MaxLength="20" FixedLength="false" />
+          <Property Type="Int32" Name="Height" Nullable="false" />
+          <Property Type="Int32" Name="Width" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="IdProject" />
+          </Key>
+          <Property Type="Int32" Name="IdProject" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" FixedLength="false" MaxLength="255" Unicode="true" />
+          <Property Type="String" Name="Overview" Nullable="false" Unicode="true" FixedLength="false" MaxLength="255" />
+          <Property Type="String" Name="Url" Nullable="true" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Year" Nullable="false" />
+          <NavigationProperty Name="Thumbnail" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Thumbnail" FromRole="Project" ToRole="PortfolioImage" />
+          <NavigationProperty Name="SliderImages" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_SliderImages" FromRole="Project" ToRole="PortfolioImage" />
+          <NavigationProperty Name="Client" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Client" FromRole="Project" ToRole="Client" />
+          <NavigationProperty Name="Partner" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Partner" FromRole="Project" ToRole="Partner" />
+          <NavigationProperty Name="Technologies" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Technologies" FromRole="Project" ToRole="Technology" />
+          <NavigationProperty Name="SocialMedia" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_SocialMedia" FromRole="Project" ToRole="SocialMedia" />
+          <NavigationProperty Name="ProjectTypeTags" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_ProjectTypeTag" FromRole="Project" ToRole="ProjectTypeTag" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SiteLogo" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_SiteLogo" FromRole="Project" ToRole="PortfolioImage" />
+          <NavigationProperty Name="ProjectCategory" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_ProjectCategory" FromRole="Project" ToRole="ProjectCategory" />
+          <NavigationProperty Name="ScreenSupport" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_ScreenSupport" FromRole="Project" ToRole="ScreenSupport" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Type="Int32" Name="IdClient" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" MaxLength="255" FixedLength="false" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Client" FromRole="Client" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_Project_Thumbnail">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Multiplicity="0..1" Role="Project" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Multiplicity="1" Role="PortfolioImage" />
+        </Association>
+        <Association Name="FK_Project_SliderImages">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Multiplicity="0..1" Role="Project" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Multiplicity="*" Role="PortfolioImage" />
+        </Association>
+        <Association Name="FK_Project_Client">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Role="Project" Multiplicity="*" />
+          <End Type="Plus54PortfolioRedesign2014Model.Client" Role="Client" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="IdPartner" />
+          </Key>
+          <Property Type="Int32" Name="IdPartner" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" MaxLength="255" FixedLength="false" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Partner" FromRole="Partner" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_Project_Partner">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Role="Project" Multiplicity="*" />
+          <End Type="Plus54PortfolioRedesign2014Model.Partner" Role="Partner" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Technology">
+          <Key>
+            <PropertyRef Name="IdTechnology" />
+          </Key>
+          <Property Type="Int32" Name="IdTechnology" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" MaxLength="255" FixedLength="false" />
+          <NavigationProperty Name="Thumbnail" Relationship="Plus54PortfolioRedesign2014Model.FK_Technology_Thumbnail" FromRole="Technology" ToRole="PortfolioImage" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_Technologies" FromRole="Technology" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_Technology_Thumbnail">
+          <End Type="Plus54PortfolioRedesign2014Model.Technology" Role="Technology" Multiplicity="0..1" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Role="PortfolioImage" Multiplicity="1" />
+        </Association>
+        <EntityType Name="SocialMedia">
+          <Key>
+            <PropertyRef Name="IdSocialMedia" />
+          </Key>
+          <Property Type="Int32" Name="IdSocialMedia" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" MaxLength="255" FixedLength="false" />
+          <NavigationProperty Name="Thumbnail" Relationship="Plus54PortfolioRedesign2014Model.FK_SocialMedia_Thumbnail" FromRole="SocialMedia" ToRole="PortfolioImage" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_SocialMedia" FromRole="SocialMedia" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_SocialMedia_Thumbnail">
+          <End Type="Plus54PortfolioRedesign2014Model.SocialMedia" Role="SocialMedia" Multiplicity="0..1" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Role="PortfolioImage" Multiplicity="1" />
+        </Association>
+        <EntityType Name="ProjectCategory">
+          <Key>
+            <PropertyRef Name="IdProjectCategory" />
+          </Key>
+          <Property Type="Int32" Name="IdProjectCategory" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" MaxLength="255" FixedLength="false" />
+          <NavigationProperty Name="Thumbnail" Relationship="Plus54PortfolioRedesign2014Model.FK_ProjectCategory_Thumbnail" FromRole="ProjectCategory" ToRole="PortfolioImage" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_ProjectCategory" FromRole="ProjectCategory" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_ProjectCategory_Thumbnail">
+          <End Type="Plus54PortfolioRedesign2014Model.ProjectCategory" Role="ProjectCategory" Multiplicity="0..1" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Role="PortfolioImage" Multiplicity="1" />
+        </Association>
+        <Association Name="FK_Project_Technologies">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Multiplicity="*" Role="Project" />
+          <End Type="Plus54PortfolioRedesign2014Model.Technology" Multiplicity="*" Role="Technology" />
+        </Association>
+        <Association Name="FK_Project_SocialMedia">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Multiplicity="*" Role="Project" />
+          <End Type="Plus54PortfolioRedesign2014Model.SocialMedia" Multiplicity="*" Role="SocialMedia" />
+        </Association>
+        <EntityType Name="ProjectTypeTag">
+          <Key>
+            <PropertyRef Name="IdProjectTypeTag" />
+          </Key>
+          <Property Type="Int32" Name="IdProjectTypeTag" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" Unicode="true" MaxLength="255" FixedLength="false" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_ProjectTypeTag" FromRole="ProjectTypeTag" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_Project_ProjectTypeTag">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Multiplicity="*" Role="Project" />
+          <End Type="Plus54PortfolioRedesign2014Model.ProjectTypeTag" Multiplicity="*" Role="ProjectTypeTag" />
+        </Association>
+        <Association Name="FK_Project_SiteLogo">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Role="PortfolioImage" Multiplicity="0..1" />
+        </Association>
+        <Association Name="FK_Project_ProjectCategory">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Role="Project" Multiplicity="*" />
+          <End Type="Plus54PortfolioRedesign2014Model.ProjectCategory" Role="ProjectCategory" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ScreenSupport">
+          <Key>
+            <PropertyRef Name="IdScreenSupport" />
+          </Key>
+          <Property Name="IdScreenSupport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" FixedLength="false" MaxLength="255" Unicode="true" />
+          <NavigationProperty Name="Thumbnail" Relationship="Plus54PortfolioRedesign2014Model.FK_ScreenSupport_Thumbnail" FromRole="ScreenSupport" ToRole="PortfolioImage" />
+          <NavigationProperty Name="Projects" Relationship="Plus54PortfolioRedesign2014Model.FK_Project_ScreenSupport" FromRole="ScreenSupport" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_ScreenSupport_Thumbnail">
+          <End Type="Plus54PortfolioRedesign2014Model.ScreenSupport" Role="ScreenSupport" Multiplicity="0..1" />
+          <End Type="Plus54PortfolioRedesign2014Model.PortfolioImage" Role="PortfolioImage" Multiplicity="1" />
+        </Association>
+        <Association Name="FK_Project_ScreenSupport">
+          <End Type="Plus54PortfolioRedesign2014Model.Project" Role="Project" Multiplicity="*" />
+          <End Type="Plus54PortfolioRedesign2014Model.ScreenSupport" Role="ScreenSupport" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Plus54PortfolioRedesign2014ModelStoreContainer" CdmEntityContainer="Plus54PortfolioRedesign2014Entities">
+    <EntitySetMapping Name="PortfolioImage">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.PortfolioImage)">
+        <MappingFragment StoreEntitySet="PortfolioImage">
+          <ScalarProperty Name="IdImage" ColumnName="IdImage" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Project">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.Project)">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="IdProject" ColumnName="IdProject" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Overview" ColumnName="Overview" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.Client)">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partner">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.Partner)">
+        <MappingFragment StoreEntitySet="Partner">
+          <ScalarProperty Name="IdPartner" ColumnName="IdPartner" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Technology">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.Technology)">
+        <MappingFragment StoreEntitySet="Technology">
+          <ScalarProperty Name="IdTechnology" ColumnName="IdTechnology" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SocialMedia">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.SocialMedia)">
+        <MappingFragment StoreEntitySet="SocialMedia">
+          <ScalarProperty Name="IdSocialMedia" ColumnName="IdSocialMedia" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectCategory">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.ProjectCategory)">
+        <MappingFragment StoreEntitySet="ProjectCategory">
+          <ScalarProperty Name="IdProjectCategory" ColumnName="IdProjectCategory" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTypeTag">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.ProjectTypeTag)">
+        <MappingFragment StoreEntitySet="ProjectTypeTag">
+          <ScalarProperty Name="IdProjectTypeTag" ColumnName="IdProjectTypeTag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScreenSupport">
+      <EntityTypeMapping TypeName="IsTypeOf(Plus54PortfolioRedesign2014Model.ScreenSupport)">
+        <MappingFragment StoreEntitySet="ScreenSupport">
+          <ScalarProperty Name="IdScreenSupport" ColumnName="IdScreenSupport" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Project_Thumbnail" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_Thumbnail" StoreEntitySet="Project">
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="Thumbnail_IdImage" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="IdProject" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_SliderImages" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_SliderImages" StoreEntitySet="PortfolioImage">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="FK_Project_SliderImages_PortfolioImage_IdProject" />
+      </EndProperty>
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="IdImage" />
+      </EndProperty>
+      <Condition ColumnName="FK_Project_SliderImages_PortfolioImage_IdProject" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_Client" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_Client" StoreEntitySet="Project">
+      <EndProperty Name="Client">
+        <ScalarProperty Name="IdClient" ColumnName="Client_IdClient" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="IdProject" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_Partner" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_Partner" StoreEntitySet="Project">
+      <EndProperty Name="Partner">
+        <ScalarProperty Name="IdPartner" ColumnName="Partner_IdPartner" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="IdProject" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Technology_Thumbnail" TypeName="Plus54PortfolioRedesign2014Model.FK_Technology_Thumbnail" StoreEntitySet="Technology">
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="Thumbnail_IdImage" />
+      </EndProperty>
+      <EndProperty Name="Technology">
+        <ScalarProperty Name="IdTechnology" ColumnName="IdTechnology" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_SocialMedia_Thumbnail" TypeName="Plus54PortfolioRedesign2014Model.FK_SocialMedia_Thumbnail" StoreEntitySet="SocialMedia">
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="Thumbnail_IdImage" />
+      </EndProperty>
+      <EndProperty Name="SocialMedia">
+        <ScalarProperty Name="IdSocialMedia" ColumnName="IdSocialMedia" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ProjectCategory_Thumbnail" TypeName="Plus54PortfolioRedesign2014Model.FK_ProjectCategory_Thumbnail" StoreEntitySet="ProjectCategory">
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="Thumbnail_IdImage" />
+      </EndProperty>
+      <EndProperty Name="ProjectCategory">
+        <ScalarProperty Name="IdProjectCategory" ColumnName="IdProjectCategory" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_Technologies" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_Technologies" StoreEntitySet="FK_Project_Technologies">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="Projects_IdProject" />
+      </EndProperty>
+      <EndProperty Name="Technology">
+        <ScalarProperty Name="IdTechnology" ColumnName="Technologies_IdTechnology" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_SocialMedia" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_SocialMedia" StoreEntitySet="FK_Project_SocialMedia">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="Projects_IdProject" />
+      </EndProperty>
+      <EndProperty Name="SocialMedia">
+        <ScalarProperty Name="IdSocialMedia" ColumnName="SocialMedia_IdSocialMedia" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_ProjectTypeTag" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_ProjectTypeTag" StoreEntitySet="FK_Project_ProjectTypeTag">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="Projects_IdProject" />
+      </EndProperty>
+      <EndProperty Name="ProjectTypeTag">
+        <ScalarProperty Name="IdProjectTypeTag" ColumnName="ProjectTypeTags_IdProjectTypeTag" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_SiteLogo" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_SiteLogo" StoreEntitySet="Project">
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="SiteLogo_IdImage" />
+      </EndProperty>
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="IdProject" />
+      </EndProperty>
+            <Condition ColumnName="SiteLogo_IdImage" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_ProjectCategory" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_ProjectCategory" StoreEntitySet="FK_Project_ProjectCategory">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="Projects_IdProject" />
+      </EndProperty>
+      <EndProperty Name="ProjectCategory">
+        <ScalarProperty Name="IdProjectCategory" ColumnName="ProjectCategory_IdProjectCategory" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ScreenSupport_Thumbnail" TypeName="Plus54PortfolioRedesign2014Model.FK_ScreenSupport_Thumbnail" StoreEntitySet="ScreenSupport">
+      <EndProperty Name="PortfolioImage">
+        <ScalarProperty Name="IdImage" ColumnName="Thumbnail_IdImage" />
+      </EndProperty>
+      <EndProperty Name="ScreenSupport">
+        <ScalarProperty Name="IdScreenSupport" ColumnName="IdScreenSupport" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Project_ScreenSupport" TypeName="Plus54PortfolioRedesign2014Model.FK_Project_ScreenSupport" StoreEntitySet="FK_Project_ScreenSupport">
+      <EndProperty Name="Project">
+        <ScalarProperty Name="IdProject" ColumnName="Projects_IdProject" />
+      </EndProperty>
+      <EndProperty Name="ScreenSupport">
+        <ScalarProperty Name="IdScreenSupport" ColumnName="ScreenSupport_IdScreenSupport" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

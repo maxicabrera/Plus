@@ -1,0 +1,6 @@
+﻿@{
+    ViewBag.Title = "Technology Page";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTabbedMaster.cshtml";
+    ViewBag.EntityName = "Technology";
+    ViewBag.EntityPath = "Technology";
+}

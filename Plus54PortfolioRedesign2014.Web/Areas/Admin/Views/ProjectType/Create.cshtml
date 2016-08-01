@@ -1,0 +1,65 @@
+﻿@model Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectTypeModel
+@{
+    ViewBag.Title = "Create Project Type";
+    Layout = Request.IsAjaxRequest() || ViewContext.Controller.ControllerContext.IsChildAction ? "~/Areas/Admin/Views/Shared/_emptyLayout.cshtml" : "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+    var entityName = "Project Type";
+    var tab1Title = string.Format("List {0}", entityName);
+    var tab2Title = string.Format("Add/Edit {0}", entityName);
+}
+
+@section AjaxJavascriptInclude{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section JavaScript{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            initPages('ProjectType', '@entityName', '@tab1Title', '@tab2Title');
+
+            $('#projectTypeForm').on('submit', function (e) {
+                e.preventDefault();
+
+                //TODO: validate
+
+                callCreate($(this));
+            });
+
+            $(":text").live('keypress', function (event) {
+                if (event.charCode === 60 || event.charCode === 62 || event.charCode === 43) {
+                    event.preventDefault();
+                }
+            });
+
+            setChosens();
+        });
+    </script>
+}
+
+@section MainContent{
+    <h2>@ViewBag.Title</h2>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "projectTypeForm", @class = "form-horizontal" }))
+    {
+        <fieldset>
+            <div id="legend">
+                <legend>Create new Project Type</legend>
+            </div>
+            <div id="errorPlaceHolder" style="display: none;">
+                @Html.ValidationSummary()
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Name)
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "span9", placeholder = "Project Type Name" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>           
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" class="btn btn-success clickedButton" value="Save" />
+                    <input type="button" data-dismiss="modal" onclick="javascript: cancelPage();" value="Cancel" class="btn btn-inverse" />
+                </div>
+            </div>
+        </fieldset>
+    }
+}

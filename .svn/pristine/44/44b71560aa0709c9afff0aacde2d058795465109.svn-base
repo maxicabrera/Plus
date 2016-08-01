@@ -1,0 +1,6 @@
+﻿@{
+    ViewBag.Title = "Project Category Page";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTabbedMaster.cshtml";
+    ViewBag.EntityName = "Project Category";
+    ViewBag.EntityPath = "ProjectCategory";
+}

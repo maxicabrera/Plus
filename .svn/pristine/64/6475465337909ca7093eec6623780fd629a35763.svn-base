@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Custom.Framework</id>
+    <version>1.0.0</version>
+    <authors>Plus54</authors>
+    <owners>Plus54</owners>
+    <licenseUrl>http://plus54.com</licenseUrl>
+    <projectUrl>http://plus54.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Core dll for database connections and Utilities</description>
+    <releaseNotes>Adding Utilities.</releaseNotes>
+    <copyright>Copyright 2013</copyright>
+    <tags>Custom Framework</tags>
+    <references>
+      <reference file="Custom.Framework.Core.dll" />
+      <reference file="Custom.Framework.Utilities.dll" />
+      <reference file="System.Net.Http.Formatting.dll" />
+      <reference file="System.Web.Http.dll" />
+      <reference file="System.Web.Http.WebHost.dll" />
+    </references>
+  </metadata>
+</package>

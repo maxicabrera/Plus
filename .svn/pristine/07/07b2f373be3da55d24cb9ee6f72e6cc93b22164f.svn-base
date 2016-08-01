@@ -1,0 +1,6 @@
+﻿@{
+    ViewBag.Title = "Screen Support Page";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTabbedMaster.cshtml";
+    ViewBag.EntityName = "Screen Support";
+    ViewBag.EntityPath = "ScreenSupport";
+}

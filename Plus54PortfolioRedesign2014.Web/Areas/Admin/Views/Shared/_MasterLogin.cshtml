@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Plus54 Portfolio - @ViewBag.Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+        var tempText = '...loading...';
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/MiscJS")
+    @RenderSection("JavaScript", required: false)
+</head>
+<body>
+    <div class="page">
+        <header>
+        </header>
+        <section id="main">
+            @RenderSection("MainContent")
+        </section>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>

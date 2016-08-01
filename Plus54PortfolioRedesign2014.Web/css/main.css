@@ -1,0 +1,1068 @@
+/* Media Size */
+
+
+/* 0, 640px */
+
+
+/* 641px, 1024px */
+
+
+/* 1025px, 1440px */
+
+
+/* 1441px, 1920px */
+
+
+/* 1921px */
+
+
+/* Media Queries */
+
+
+/* FONTS */
+
+
+/* Gradient */
+
+
+/* Text Colors */
+
+
+/* GLOBAL */
+
+
+/* line 58, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+body {
+  background: #000;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+/* line 64, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+a {
+  color: #fff;
+}
+
+/* line 70, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+a:hover, a:active, a.active {
+  color: #ff434e;
+}
+
+/* line 74, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav {
+  width: 100%;
+  display: table;
+}
+
+/* line 78, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav h1 {
+  color: #fff;
+  display: inline-block;
+  font: 1rem 'Open Sans', sans-serif;
+  line-height: 1rem;
+  float: left;
+  width: 85%;
+  float: left;
+}
+
+/* line 87, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav h1 img {
+  width: 60%;
+}
+@media only screen and (min-width:64.063em) {
+  nav h1 {
+    width: auto;
+  }
+  /* line 94, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+  nav h1 img {
+    width: auto;
+  }
+}
+
+/* line 101, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav > a {
+  display: inline-block;
+}
+
+/* line 105, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav #sidebarButton {
+  width: 11%;
+  float: left;
+  margin-top: 10px;
+}
+
+/* line 111, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav ul {
+  display: none;
+  margin: 0;
+}
+@media only screen and (min-width:64.063em) {
+  nav ul {
+    display: inline-block;
+    float: right;
+  }
+}
+
+/* line 120, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav ul li {
+  display: inline-block;
+}
+
+/* line 123, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+nav ul li a {
+  text-transform: uppercase;
+  line-height: 78px;
+  font-size: 0.9em;
+  margin: 0 1em;
+}
+
+/* line 134, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar .search-box {
+  background: rgba(254, 254, 254, 0.3);
+  display: table;
+  width: 100%;
+  margin: 10px 3%;
+}
+
+/* line 140, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar .search-box input[type="search"] {
+  background: url("../img/icons.png") no-repeat scroll 0 -262px transparent;
+  width: 78%;
+  border: none;
+  box-shadow: none;
+  display: inline-table;
+  color: #fff;
+  padding: 0 0 0 35px;
+  margin: 0;
+}
+
+/* line 150, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar .search-box input[type="search"]:focus {
+  border: none;
+  box-shadow: none;
+}
+
+/* line 156, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar .search-box input[type="submit"] {
+  background: url("../img/icons.png") no-repeat scroll right -124px transparent;
+  border: medium none;
+  display: inline-table;
+  height: 45px;
+  width: 20%;
+  cursor: pointer;
+}
+
+/* line 166, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav {
+  width: 100%;
+  margin: 0 3%;
+}
+
+/* line 170, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li {
+  background: url("../img/icons.png") no-repeat scroll right -184px rgba(0, 0, 0, 0);
+  border-bottom: 1px solid #eb2530;
+  width: 100%;
+  padding: 0 1%;
+}
+
+/* line 176, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li a {
+  background: url(../img/icons-menu.png) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+  float: left;
+  line-height: 0.8rem;
+  margin: 0;
+  padding: 20px 0 20px 34px;
+  width: 100%;
+}
+
+/* line 187, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li .case-studies {
+  background-position: 0 0;
+}
+
+/* line 190, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li .showcase {
+  background-position: 0 -130px;
+}
+
+/* line 193, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li .contact-us {
+  background-position: 0 -265px;
+}
+
+/* line 198, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li.active {
+  background-position: right -338px;
+}
+
+/* line 201, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li.active a {
+  color: #eb2530;
+}
+
+/* line 205, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li.active .case-studies {
+  background-position: 0 -67px;
+}
+
+/* line 208, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li.active .showcase {
+  background-position: 0 -197px;
+}
+
+/* line 211, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#sidebar #sideMainNav li.active .contact-us {
+  background-position: 0 -332px;
+}
+
+/* line 223, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+footer {
+  padding: 15px 0;
+}
+
+/* line 225, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+footer p {
+  text-align: center;
+  font-size: 0.6rem;
+  color: #484848;
+  width: 80%;
+  margin: 10px auto;
+}
+@media only screen and (min-width:64.063em) {
+  footer p {
+    width: 35%;
+  }
+}
+
+/* line 236, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+footer p a.contact {
+  text-transform: uppercase;
+  color: #eb2530;
+  font-size: 0.9rem;
+  line-height: 2rem;
+}
+
+/* line 242, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+footer p a.contact:hover {
+  color: #fff;
+}
+
+/* line 250, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.noise {
+  background: url(../img/noise.png) repeat;
+}
+
+/* PAGE - LOGIN */
+
+
+/* line 255, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login {
+  /**/
+  text-align: center;
+  overflow: hidden;
+  background: url("../img/login-bg.jpg") no-repeat center center/auto 100% rgba(0, 0, 0, 0);
+}
+@media only screen and (min-width:64.063em) {
+  #login {
+    background: url("../img/login-bg.jpg") no-repeat center center/100% auto rgba(0, 0, 0, 0);
+  }
+}
+
+/* line 265, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login video#bgvid {
+  position: absolute;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background: url("../img/login-bg.jpg") no-repeat center center/auto 100% rgba(0, 0, 0, 0);
+}
+
+/* line 276, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .noise {
+  padding: 15% 0 18%;
+}
+@media only screen and (min-width:64.063em) {
+  #login .noise {
+    padding: 8% 0 10%;
+  }
+}
+
+/* line 284, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 2.1rem;
+}
+@media only screen and (min-width:64.063em) {
+  #login h3 {
+    font-size: 2.3rem;
+    line-height: 2.3rem;
+  }
+}
+
+/* line 297, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+@media only screen and (min-width:64.063em) {
+  #login p {
+    font-size: 1.3rem;
+  }
+}
+
+/* line 306, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login {
+  width: 80%;
+  margin: 40px auto 20px;
+}
+@media only screen and (min-width:64.063em) {
+  #login .box-login {
+    margin: 0 auto;
+  }
+}
+
+/* line 314, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login .title {
+  background: rgba(0, 0, 0, 0.8);
+  text-align: left;
+  padding: 0.4% 2%;
+  margin-bottom: 2px;
+}
+
+/* line 320, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login .title h4 {
+  background: url(../img/icons.png) no-repeat 0 0;
+  color: #eb2530;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  line-height: 2rem;
+  padding-left: 36px;
+  margin: 5px 0;
+}
+
+/* line 332, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login input[type="text"], #login .box-login input[type="password"] {
+  width: 100%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border: 0;
+  margin: 0 0 1px 0;
+}
+@media only screen and (min-width:40.063em) {
+  #login .box-login input[type="text"], #login .box-login input[type="password"] {
+    width: 99%;
+  }
+}
+
+/* line 344, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login input[type="submit"] {
+  background: url("../img/icons.png") no-repeat scroll 50px -48px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  color: #fff;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  font-family: inherit;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: block;
+  font-size: 0.875rem;
+  margin: 0 0 1px 0;
+  height: 2.3125rem;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+}
+
+/* line 366, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login .error input {
+  border: 1px solid #eb2530;
+}
+
+/* line 370, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#login .box-login #error {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+  color: #eb2530;
+  float: left;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+  padding: 2px 10px;
+  text-align: left;
+  width: 100%;
+}
+
+/* GENERAL - HEADER */
+
+
+/* line 384, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header {
+  background: #180002;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjMTgwMDAyIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMjIlIiBzdG9wLWNvbG9yPSIjNzgwNzE4IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTglIiBzdG9wLWNvbG9yPSIjYWUxOTE2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNjglIiBzdG9wLWNvbG9yPSIjYWUxOTE2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQ5MDYwNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(-45deg, #180002 1%, #780718 22%, #ae1916 58%, #ae1916 68%, #490604 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(1%, #180002), color-stop(22%, #780718), color-stop(58%, #ae1916), color-stop(68%, #ae1916), color-stop(100%, #490604));
+  background: -webkit-linear-gradient(-45deg, #180002 1%, #780718 22%, #ae1916 58%, #ae1916 68%, #490604 100%);
+  background: -o-linear-gradient(-45deg, #180002 1%, #780718 22%, #ae1916 58%, #ae1916 68%, #490604 100%);
+  background: -ms-linear-gradient(-45deg, #180002 1%, #780718 22%, #ae1916 58%, #ae1916 68%, #490604 100%);
+  background: linear-gradient(135deg, #180002 1%, #780718 22%, #ae1916 58%, #ae1916 68%, #490604 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#180002', endColorstr='#490604', GradientType=1);
+}
+@media only screen and (max-width: 40em) {
+  .header {
+    padding: 22px 0;
+  }
+}
+@media only screen and (min-width:40.063em) {
+  .header {
+    max-width: 100%;
+  }
+}
+
+/* line 396, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header h2 {
+  font-size: 1.12rem;
+  line-height: 1.12rem;
+  margin: 0;
+  text-align: center;
+  color: #fff;
+  font-weight: 300;
+}
+@media only screen and (min-width:40.063em) {
+  .header h2 {
+    font-size: 2.25rem;
+    line-height: 9rem;
+  }
+}
+
+/* line 410, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header .search-col {
+  height: 9rem;
+  margin-bottom: 0;
+}
+
+/* line 414, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header .search-col .search-box {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px 0 12px 15px;
+  transform: translate(0%, 50%);
+  -webkit-transform: translate(0%, 50%);
+  -o-transform: translate(0%, 50%);
+  -ms-transform: translate(0%, 50%);
+}
+
+/* line 423, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header .search-col .search-box input[type="search"] {
+  background: url("../img/icons.png") no-repeat scroll 0 -262px transparent;
+  width: 78%;
+  border: none;
+  box-shadow: none;
+  display: inline-table;
+  color: #fff;
+  padding: 0 0 0 14%;
+  margin: 0;
+}
+
+/* line 433, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header .search-col .search-box input[type="search"]:focus {
+  border: none;
+  box-shadow: none;
+}
+
+/* line 439, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.header .search-col .search-box input[type="submit"] {
+  background: url("../img/icons.png") no-repeat scroll 0 -124px transparent;
+  border: medium none;
+  display: inline-table;
+  height: 45px;
+  width: 20%;
+  cursor: pointer;
+  text-indent: -99999px;
+}
+
+/* GENERAL - FILTERS */
+
+@media only screen and (min-width:40.063em) {
+  .filters {
+    max-width: 100%;
+  }
+}
+@media only screen and (min-width:40.063em) {
+  .filters .filter-type, .filters .filter-tech {
+    border-bottom: 1px #eb2530 solid;
+  }
+}
+
+/* line 468, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-title, .filters .filter-tech .filter-title {
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+  color: #616161;
+  text-transform: uppercase;
+  padding: 18px 30px;
+  display: block;
+  border-bottom: 1px #eb2530 solid;
+  background: url("../img/icons.png") no-repeat scroll transparent;
+  background-position: right -309px;
+  background-size: 40px;
+}
+
+/* line 480, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-title.active, .filters .filter-tech .filter-title.active {
+  background: url("../img/icons.png") no-repeat scroll transparent;
+  background-position: right -264px;
+  background-size: 40px;
+}
+@media only screen and (max-width: 40em) {
+  .filters .filter-type .filter-title, .filters .filter-tech .filter-title {
+    cursor: pointer;
+  }
+}
+@media only screen and (min-width:40.063em) {
+  .filters .filter-type .filter-title, .filters .filter-tech .filter-title {
+    padding: 18px 15px 18px 40px;
+    display: inline-block;
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+    background: none;
+    border: none;
+  }
+}
+
+/* line 500, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content, .filters .filter-tech .filter-content {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 504, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul, .filters .filter-tech .filter-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 509, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul li, .filters .filter-tech .filter-content ul li {
+  border-bottom: 1px #1c1c1c solid;
+}
+@media only screen and (min-width:40.063em) {
+  .filters .filter-type .filter-content ul li, .filters .filter-tech .filter-content ul li {
+    border: none;
+    display: inline-block;
+  }
+}
+
+/* line 517, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul li .filter-item, .filters .filter-tech .filter-content ul li .filter-item {
+  padding: 18px 30px;
+  display: block;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+  margin: 0;
+}
+
+/* line 527, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul li .filter-item.active, .filters .filter-tech .filter-content ul li .filter-item.active {
+  color: #eb2530;
+}
+@media only screen and (max-width: 40em) {
+  .filters .filter-type .filter-content ul li .filter-item.active, .filters .filter-tech .filter-content ul li .filter-item.active {
+    background: url("../img/icons.png") no-repeat scroll transparent;
+    background-position: right -343px;
+    background-size: 40px;
+  }
+}
+
+/* line 537, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul li .filter-item:hover, .filters .filter-tech .filter-content ul li .filter-item:hover {
+  color: #ff434e;
+  cursor: pointer;
+}
+@media only screen and (min-width:40.063em) {
+  .filters .filter-type .filter-content ul li .filter-item, .filters .filter-tech .filter-content ul li .filter-item {
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+    padding: 18px 15px;
+  }
+}
+
+/* line 549, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul li .filter-check, .filters .filter-tech .filter-content ul li .filter-check {
+  display: none;
+}
+
+/* line 552, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content ul li .filter-check:checked + .filter-item, .filters .filter-tech .filter-content ul li .filter-check:checked + .filter-item {
+  color: #ff434e;
+}
+@media only screen and (max-width: 40em) {
+  .filters .filter-type .filter-content ul li .filter-check:checked + .filter-item, .filters .filter-tech .filter-content ul li .filter-check:checked + .filter-item {
+    background: url("../img/icons.png") no-repeat scroll transparent;
+    background-position: right -343px;
+    background-size: 40px;
+  }
+}
+@media only screen and (min-width:40.063em) {
+  .filters .filter-type .filter-content, .filters .filter-tech .filter-content {
+    display: inline-block;
+  }
+}
+
+/* line 569, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content .filter-apply, .filters .filter-tech .filter-content .filter-apply {
+  text-align: center;
+  display: block;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+  text-transform: uppercase;
+}
+
+/* line 577, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .filter-type .filter-content .filter-apply:hover, .filters .filter-tech .filter-content .filter-apply:hover {
+  color: #ff434e;
+  cursor: pointer;
+}
+@media only screen and (max-width: 40em) {
+  .filters .filter-type .filter-content .filter-apply, .filters .filter-tech .filter-content .filter-apply {
+    border-bottom: 1px #eb2530 solid;
+    padding: 20px;
+  }
+}
+@media only screen and (min-width:40.063em) {
+  .filters .filter-type .filter-content .filter-apply, .filters .filter-tech .filter-content .filter-apply {
+    display: none;
+  }
+}
+@media only screen and (max-width: 40em) {
+  .filters .filter-type .filter-content, .filters .filter-tech .filter-content {
+    display: none;
+  }
+}
+
+/* line 603, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .general-apply {
+  text-align: right;
+  text-align: right;
+  position: absolute;
+  width: auto;
+  right: 0;
+}
+
+/* line 610, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .general-apply .filter-apply {
+  cursor: pointer;
+  color: #fff;
+  padding: 10px;
+  display: inline-block;
+}
+
+/* line 616, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.filters .general-apply .filter-apply:hover {
+  color: #ff434e;
+  cursor: pointer;
+}
+@media only screen and (max-width: 40em) {
+  .filters .general-apply {
+    display: none;
+  }
+}
+
+/* PAGE - HOME PAGE */
+
+
+/* line 631, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.box-home a span {
+  display: block;
+  color: #fff;
+  background: #000;
+  text-transform: uppercase;
+  padding: 2px 20px;
+  margin: 10px 30%;
+  width: 40%;
+}
+@media only screen and (min-width:64.063em) {
+  .box-home a span {
+    width: auto;
+    margin: 10px 10%;
+  }
+}
+
+/* line 644, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.box-home a:hover span {
+  color: #eb2530;
+}
+
+/* PAGE - SEARCH RESULTS */
+
+
+/* line 653, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .subtitle {
+  background-color: #101010;
+  padding: 15px 30px;
+}
+@media only screen and (min-width:40.063em) {
+  #search-results .subtitle {
+    padding: 25px 40px;
+    max-width: 100%;
+  }
+}
+
+/* line 662, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .subtitle h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  font-weight: 200;
+  color: #ff434e;
+}
+@media only screen and (min-width:64.063em) {
+  #search-results .subtitle h3 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* line 674, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .subtitle h3 span {
+  margin-left: 0.2rem;
+  color: #cacaca;
+  font-size: 0.5rem;
+  line-height: 0.5rem;
+  text-transform: uppercase;
+}
+@media only screen and (min-width:64.063em) {
+  #search-results .subtitle h3 span {
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+  }
+}
+@media only screen and (max-width: 40em) {
+  #search-results .subtitle {
+    max-width: 100%;
+  }
+}
+
+/* line 692, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .subtitle .subtitle-back {
+  display: block;
+  text-align: right;
+  text-transform: uppercase;
+  color: #cacaca;
+  vertical-align: bottom;
+}
+@media only screen and (min-width:64.063em) {
+  #search-results .subtitle .subtitle-back {
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+  }
+}
+@media only screen and (max-width: 40em) {
+  #search-results .subtitle .subtitle-back {
+    font-size: 0.5rem;
+    line-height: 0.9rem;
+  }
+}
+
+/* line 709, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .subtitle .subtitle-back:hover {
+  color: #ff434e;
+}
+
+/* line 715, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .message-box {
+  padding: 6em 0;
+  text-align: center;
+}
+
+/* line 719, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .message-box img {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px auto;
+}
+
+/* line 726, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#search-results .message-box span {
+  text-transform: uppercase;
+  display: block;
+  font-size: 0.7rem;
+  line-height: 0.7rem;
+}
+
+/* SHOWCASE LIST */
+
+
+/* line 738, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .head-conent {
+  width: 100%;
+  padding: 20px 15%;
+  float: left;
+  background: #fff;
+}
+
+/* line 744, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .head-conent h3 {
+  width: 80%;
+  float: left;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #51595f;
+  line-height: 20px;
+}
+
+/* line 753, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .head-conent .category {
+  width: 20%;
+  float: left;
+}
+
+/* line 757, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .head-conent .category img {
+  height: 32px;
+}
+
+/* line 761, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .head-conent .category > * {
+  float: right;
+}
+
+/* line 766, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details {
+  padding: 30px 15%;
+  background: #fff;
+}
+
+/* line 770, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .detail-content {
+  width: 50%;
+}
+
+/* line 773, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .detail-content h4 {
+  color: #51595f;
+}
+
+/* line 777, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .detail-content p {
+  font-size: 0.9rem;
+}
+
+/* line 781, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .detail-content h5 {
+  font-size: 0.9rem;
+  color: #51595f;
+  text-transform: uppercase;
+}
+
+/* line 787, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .detail-content img {
+  margin-right: 10px;
+}
+
+/* line 792, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .moreinfo {
+  width: 30%;
+  float: right;
+}
+
+/* line 796, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .moreinfo p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* line 801, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .moreinfo h5 {
+  font-size: 0.9rem;
+  color: #51595f;
+  text-transform: uppercase;
+}
+
+/* line 807, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .moreinfo a {
+  color: #eb2530;
+}
+
+/* line 809, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .moreinfo a:hover {
+  color: #ad1933;
+}
+
+/* line 814, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+#og-grid .og-details .moreinfo .clientlogo {
+  margin-top: 30px;
+}
+
+/* line 822, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider {
+  position: relative !important;
+}
+
+/* line 825, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider .slick-prev {
+  left: 20%;
+  background: url(../img/arrow-left.png) no-repeat;
+  height: 72px;
+  width: 29px;
+}
+
+/* line 831, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider .slick-prev:before {
+  content: none;
+}
+
+/* line 835, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider .slick-prev:hover {
+  background: url(../img/arrow-left-hover.png) no-repeat;
+}
+
+/* line 840, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider .slick-next {
+  right: 20%;
+  background: url(../img/arrow-right.png) no-repeat;
+  height: 72px;
+  width: 29px;
+}
+
+/* line 846, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider .slick-next:before {
+  content: none;
+}
+
+/* line 850, C:/Users/amouly/Projects/Plus54PortfolioRedesign2014/Plus54PortfolioRedesign2014.Web/css/main.scss */
+
+.slick-slider .slick-next:hover {
+  background: url(../img/arrow-right-hover.png) no-repeat;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+.triangle-arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid white;
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  display: none;
+}
+.details-block {
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  display: none;
+
+}

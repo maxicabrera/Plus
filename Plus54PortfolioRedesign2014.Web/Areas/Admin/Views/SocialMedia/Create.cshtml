@@ -1,0 +1,117 @@
+﻿@model Plus54PortfolioRedesign2014.Web.Admin.Models.SocialMediaModel
+@{
+    ViewBag.Title = "Create Social Media";
+    Layout = Request.IsAjaxRequest() || ViewContext.Controller.ControllerContext.IsChildAction ? "~/Areas/Admin/Views/Shared/_emptyLayout.cshtml" : "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+    var entityName = "Social Media";
+    var tab1Title = string.Format("List {0}", entityName);
+    var tab2Title = string.Format("Add/Edit {0}", entityName);
+}
+@section AjaxJavascriptInclude{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/css/FileUpload")
+    @Scripts.Render("~/bundles/FileUpload")
+}
+@section JavaScript{
+    @Scripts.Render("~/bundles/SocialMediaJS")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initPages('SocialMedia', '@entityName', '@tab1Title', '@tab2Title');
+            initFileUpload('socialMediaForm', createSocialMedia, '@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.UploaderHandlerFolder?folderType=@Plus54PortfolioRedesign2014.Web.AppCode.Helpers.FolderPath.SocialMedia',@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.AllowImagesExtensions,1,null,655360);
+
+            $("#btnSave").click(function (e) {
+                e.preventDefault();
+
+                //TODO: validate
+
+                if ($("div.template-upload").size() > 0) {
+                    $("#btnSaveSubmit").click();
+                }
+                else {
+                    createSocialMedia($("#socialMediaForm"), null);
+                }
+            });
+
+            $(":text").live('keypress', function (event) {
+                if (event.charCode === 60 || event.charCode === 62 || event.charCode === 43) {
+                    event.preventDefault();
+                }
+            });
+
+            setChosens();
+        });
+    </script>
+}
+@section MainContent{
+    <h2>@ViewBag.Title</h2>
+    <form id="socialMediaForm" action="/Admin/SocialMedia/Create" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+            <div id="legend">
+                <legend>Create new Social Media</legend>
+            </div>
+            <div id="errorPlaceHolder" style="display: none;">
+                @Html.ValidationSummary()
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Name)
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "span9", placeholder = "Social Media Name" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.ThumbnailPath)
+                <div class="controls">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus icon-white"></i>
+                        <span>Select File</span>
+                        <input type="file" name="files">
+                    </span>
+                    <div class="files row"></div>
+                    @Html.HiddenFor(model => model.ThumbnailPath, new { id = "FileUrl" })
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls fileupload-buttonbar">
+                    <button type="button" class="btn btn-success clickedButton" id="btnSave">Save</button>
+                    <button type="submit" id="btnSaveSubmit" class="btn btn-primary start hide">Save</button>
+                    <input type="button" data-dismiss="modal" onclick="javascript: cancelPage();" value="Cancel" class="btn btn-inverse" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <!-- The template to display files available for upload -->
+    <script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <div class="template-upload fade">
+        <span>{%=file.name%}</span>
+        <span>{%=o.formatFileSize(file.size)%}</span>
+    </div>
+    <div class="template-upload fade">
+        {% if (file.error) { %}
+            <div class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</div>
+        {% } else if (o.files.valid && !i) { %}
+            <div>
+                <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+            </div>
+            <div class="start">{% if (!o.options.autoUpload) { %}
+                <button class="btn btn-primary hide">
+                    <i class="icon-upload icon-white"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            {% } %}</div>
+        {% } else { %}
+            <td colspan="2"></td>
+        {% } %}
+        <div class="cancel">{% if (!i) { %}
+            <button class="btn btn-warning">
+                <i class="icon-ban-circle"></i>
+                <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+        {% } %}</div>
+    </div>
+{% } %}
+    </script>
+    <!-- The template to display files available for download -->
+    <script id="template-download" type="text/x-tmpl">
+    </script>
+}

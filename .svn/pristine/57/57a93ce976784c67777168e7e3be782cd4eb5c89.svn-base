@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="Plus54PortfolioRedesign2014.BusinessLogic.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+            <section name="Plus54PortfolioRedesign2014.BusinessLogic.Settings1" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+    <applicationSettings>
+        <Plus54PortfolioRedesign2014.BusinessLogic.Settings>
+            <setting name="TechnologyThumbnailHeight" serializeAs="String">
+                <value>40</value>
+            </setting>
+            <setting name="TechnologyThumbnailWidth" serializeAs="String">
+                <value>-1</value>
+            </setting>
+            <setting name="ProjectCategoryThumbnailHeight" serializeAs="String">
+                <value>-1</value>
+            </setting>
+            <setting name="ProjectCategoryThumbnailWidth" serializeAs="String">
+                <value>-1</value>
+            </setting>
+            <setting name="ProjectCategoryThumbnailMaxHeight" serializeAs="String">
+                <value>340</value>
+            </setting>
+            <setting name="SocialMediaThumbnailHeight" serializeAs="String">
+                <value>40</value>
+            </setting>
+            <setting name="SocialMediaThumbnailWidth" serializeAs="String">
+                <value>40</value>
+            </setting>
+            <setting name="ProjectThumbnailHeight" serializeAs="String">
+                <value>340</value>
+            </setting>
+            <setting name="ProjectThumbnailWidth" serializeAs="String">
+                <value>340</value>
+            </setting>
+            <setting name="ProjectSiteLogoHeight" serializeAs="String">
+                <value>180</value>
+            </setting>
+            <setting name="ProjectSiteLogoWidth" serializeAs="String">
+                <value>180</value>
+            </setting>
+            <setting name="ProjectSliderImageHeight" serializeAs="String">
+                <value>712</value>
+            </setting>
+            <setting name="ProjectSliderImageWidth" serializeAs="String">
+                <value>1366</value>
+            </setting>
+            <setting name="UserName" serializeAs="String">
+                <value>plus</value>
+            </setting>
+            <setting name="Password" serializeAs="String">
+                <value>plus</value>
+            </setting>
+        </Plus54PortfolioRedesign2014.BusinessLogic.Settings>
+    </applicationSettings>
+</configuration>

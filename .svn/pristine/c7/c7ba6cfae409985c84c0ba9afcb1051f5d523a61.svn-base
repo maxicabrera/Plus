@@ -1,0 +1,682 @@
+/*global define:false require:false */
+(function (name, context, definition) {
+    if (typeof module != 'undefined' && module.exports) module.exports = definition();
+    else if (typeof define == 'function' && define.amd) define(definition);
+    else context[name] = definition();
+})('jquery-scrollto', this, function(){
+    // Prepare
+    var jQuery, $, ScrollTo;
+    jQuery = $ = window.jQuery || require('jquery');
+
+    // Fix scrolling animations on html/body on safari
+    $.propHooks.scrollTop = $.propHooks.scrollLeft = {
+        get: function(elem,prop) {
+            var result = null;
+            if ( elem.tagName === 'HTML' || elem.tagName === 'BODY' ) {
+                if ( prop === 'scrollLeft' ) {
+                    result = window.scrollX;
+                } else if ( prop === 'scrollTop' ) {
+                    result = window.scrollY;
+                }
+            }
+            if ( result == null ) {
+                result = elem[prop];
+            }
+            return result;
+        }
+    };
+    $.Tween.propHooks.scrollTop = $.Tween.propHooks.scrollLeft = {
+        get: function(tween) {
+            return $.propHooks.scrollTop.get(tween.elem, tween.prop);
+        },
+        set: function(tween) {
+            // Our safari fix
+            if ( tween.elem.tagName === 'HTML' || tween.elem.tagName === 'BODY' ) {
+                // Defaults
+                tween.options.bodyScrollLeft = (tween.options.bodyScrollLeft || window.scrollX);
+                tween.options.bodyScrollTop = (tween.options.bodyScrollTop || window.scrollY);
+
+                // Apply
+                if ( tween.prop === 'scrollLeft' ) {
+                    tween.options.bodyScrollLeft = Math.round(tween.now);
+                }
+                else if ( tween.prop === 'scrollTop' ) {
+                    tween.options.bodyScrollTop = Math.round(tween.now);
+                }
+
+                // Apply
+                window.scrollTo(tween.options.bodyScrollLeft, tween.options.bodyScrollTop);
+            }
+            // jQuery's IE8 Fix
+            else if ( tween.elem.nodeType && tween.elem.parentNode ) {
+                tween.elem[ tween.prop ] = tween.now;
+            }
+        }
+    };
+
+    // jQuery ScrollTo
+    ScrollTo = {
+        // Configuration
+        config: {
+            duration: 400,
+            easing: 'swing',
+            callback: undefined,
+            durationMode: 'each',
+            offsetTop: 0,
+            offsetLeft: 0
+        },
+
+        // Set Configuration
+        configure: function(options){
+            // Apply Options to Config
+            $.extend(ScrollTo.config, options||{});
+
+            // Chain
+            return this;
+        },
+
+        // Perform the Scroll Animation for the Collections
+        // We use $inline here, so we can determine the actual offset start for each overflow:scroll item
+        // Each collection is for each overflow:scroll item
+        scroll: function(collections, config){
+            // Prepare
+            var collection, $container, container, $target, $inline, position, containerTagName,
+                containerScrollTop, containerScrollLeft,
+                containerScrollTopEnd, containerScrollLeftEnd,
+                startOffsetTop, targetOffsetTop, targetOffsetTopAdjusted,
+                startOffsetLeft, targetOffsetLeft, targetOffsetLeftAdjusted,
+                scrollOptions,
+                callback;
+
+            // Determine the Scroll
+            collection = collections.pop();
+            $container = collection.$container;
+            $target = collection.$target;
+            containerTagName = $container.prop('tagName');
+
+            // Prepare the Inline Element of the Container
+            $inline = $('<span/>').css({
+                'position': 'absolute',
+                'top': '0px',
+                'left': '0px'
+            });
+            position = $container.css('position');
+
+            // Insert the Inline Element of the Container
+            $container.css({position:'relative'});
+            $inline.appendTo($container);
+
+            // Determine the top offset
+            startOffsetTop = $inline.offset().top;
+            targetOffsetTop = $target.offset().top;
+            targetOffsetTopAdjusted = targetOffsetTop - startOffsetTop - parseInt(config.offsetTop,10);
+
+            // Determine the left offset
+            startOffsetLeft = $inline.offset().left;
+            targetOffsetLeft = $target.offset().left;
+            targetOffsetLeftAdjusted = targetOffsetLeft - startOffsetLeft - parseInt(config.offsetLeft,10);
+
+            // Determine current scroll positions
+            containerScrollTop = $container.prop('scrollTop');
+            containerScrollLeft = $container.prop('scrollLeft');
+
+            // Reset the Inline Element of the Container
+            $inline.remove();
+            $container.css({position:position});
+
+            // Prepare the scroll options
+            scrollOptions = {};
+
+            // Prepare the callback
+            callback = function(event){
+                // Check
+                if ( collections.length === 0 ) {
+                    // Callback
+                    if ( typeof config.callback === 'function' ) {
+                        config.callback();
+                    }
+                }
+                else {
+                    // Recurse
+                    ScrollTo.scroll(collections,config);
+                }
+                // Return true
+                return true;
+            };
+
+            // Handle if we only want to scroll if we are outside the viewport
+            if ( config.onlyIfOutside ) {
+                // Determine current scroll positions
+                containerScrollTopEnd = containerScrollTop + $container.height();
+                containerScrollLeftEnd = containerScrollLeft + $container.width();
+
+                // Check if we are in the range of the visible area of the container
+                if ( containerScrollTop < targetOffsetTopAdjusted && targetOffsetTopAdjusted < containerScrollTopEnd ) {
+                    targetOffsetTopAdjusted = containerScrollTop;
+                }
+                if ( containerScrollLeft < targetOffsetLeftAdjusted && targetOffsetLeftAdjusted < containerScrollLeftEnd ) {
+                    targetOffsetLeftAdjusted = containerScrollLeft;
+                }
+            }
+
+            // Determine the scroll options
+            if ( targetOffsetTopAdjusted !== containerScrollTop ) {
+                scrollOptions.scrollTop = targetOffsetTopAdjusted;
+            }
+            if ( targetOffsetLeftAdjusted !== containerScrollLeft ) {
+                scrollOptions.scrollLeft = targetOffsetLeftAdjusted;
+            }
+
+            // Check to see if the scroll is necessary
+            if ( $container.prop('scrollHeight') === $container.width() ) {
+                delete scrollOptions.scrollTop;
+            }
+            if ( $container.prop('scrollWidth') === $container.width() ) {
+                delete scrollOptions.scrollLeft;
+            }
+
+            // Perform the scroll
+            if ( scrollOptions.scrollTop != null || scrollOptions.scrollLeft != null ) {
+                $container.animate(scrollOptions, {
+                    duration: config.duration,
+                    easing: config.easing,
+                    complete: callback
+                });
+            }
+            else {
+                callback();
+            }
+
+            // Return true
+            return true;
+        },
+
+        // ScrollTo the Element using the Options
+        fn: function(options){
+            // Prepare
+            var collections, config, $container, container;
+            collections = [];
+
+            // Prepare
+            var $target = $(this);
+            if ( $target.length === 0 ) {
+                // Chain
+                return this;
+            }
+
+            // Handle Options
+            config = $.extend({},ScrollTo.config,options);
+
+            // Fetch
+            $container = $target.parent();
+            container = $container.get(0);
+
+            // Cycle through the containers
+            while ( ($container.length === 1) && (container !== document.body) && (container !== document) ) {
+                // Check Container for scroll differences
+                var containerScrollTop, containerScrollLeft;
+                containerScrollTop = $container.css('overflow-y') !== 'visible' && container.scrollHeight !== container.clientHeight;
+                containerScrollLeft =  $container.css('overflow-x') !== 'visible' && container.scrollWidth !== container.clientWidth;
+                if ( containerScrollTop || containerScrollLeft ) {
+                    // Push the Collection
+                    collections.push({
+                        '$container': $container,
+                        '$target': $target
+                    });
+                    // Update the Target
+                    $target = $container;
+                }
+                // Update the Container
+                $container = $container.parent();
+                container = $container.get(0);
+            }
+
+            // Add the final collection
+            collections.push({
+                '$container': $('html'),
+                // document.body doesn't work in firefox, html works for all
+                // internet explorer starts at the beggining
+                '$target': $target
+            });
+
+            // Adjust the Config
+            if ( config.durationMode === 'all' ) {
+                config.duration /= collections.length;
+            }
+
+            // Handle
+            ScrollTo.scroll(collections,config);
+
+            // Chain
+            return this;
+        }
+    };
+
+    // Apply our extensions to jQuery
+    $.ScrollTo = $.ScrollTo || ScrollTo;
+    $.fn.ScrollTo = $.fn.ScrollTo || ScrollTo.fn;
+
+    // Export
+    return ScrollTo;
+});
+/*globals angular,alert,console,Grid,jQuery*/
+(function($) {
+    'use strict';
+
+    /*** Angular Application ***/
+    var app = angular.module('portfolio', []);
+
+    //Windows Size
+    app.windowsize = $(window).width();
+    app.pageSize = 6;
+
+    /* Search Controller */
+    app.controller('ProjectsController', ['$scope', '$http', '$timeout',
+        function($scope, $http, $timeout) {
+
+            $scope.loadingAnimation = true;
+            $scope.moreResults = true;
+
+            //Searh Initial Conditions
+            $scope.resultsUrl = "../ProjectAjax/GetAllByFilterAndData";
+            $scope.params = {
+                pageNumber: 1,
+                pageSize: app.pageSize,
+                technologies: [],
+                proyectTypes: [],
+                keywords: ""
+            };
+
+            //Hide Results Bar
+            $scope.showBar = false;
+
+            //Define Search Function and rtigger it inmediatly
+            $scope.search = function() {
+                $scope.loadingAnimation = true;
+                $scope.params.pageNumber = 1;
+                // console.log($scope.params);
+                //Retrieve results
+                $http({
+                    method: "GET",
+                    url: $scope.resultsUrl,
+                    params: $scope.params
+                }).then(function(response) {
+                        //console.log(response);
+                        $scope.projects = response.data.results;
+                        $scope.resultsCount = response.data.total;
+                        $scope.loadingAnimation = false;
+                        if (response.data.results.length === response.data.total) {
+                            $scope.moreResults = false;
+                        } else {
+                            $scope.moreResults = true;
+                        }
+                    },
+                    function(response) {
+                        console.log("HTTP Error");
+                        console.log(response);
+                    });
+
+            };
+
+            //Fetch Initial Projects
+            $scope.search();
+            //END of onload instructions
+
+            //Submit Search or Filter
+            $scope.submit = function() {
+                $scope.keyword = $('#searchInput').val();
+
+                //We need to move away details-block or we will loose it when new data arrives
+                $(".details-block").insertAfter('#search-results');
+                $(".details-block").hide();
+
+                $scope.params.keywords = $('#searchInput').val();
+
+                //Show Results Bar
+                $scope.showBar = true;
+                $scope.search();
+            };
+
+            //Back to Showcase button hanlder - Clear filtes
+            $scope.backToShowcase = function() {
+
+                $scope.loadingAnimation = true;
+                $scope.moreResults = true;
+                $scope.setAllType();
+                $scope.setAllTech();
+
+
+                //Searh Initial Conditions
+                $scope.params = {
+                    pageNumber: 1,
+                    pageSize: app.pageSize,
+                    technologies: [],
+                    proyectTypes: [],
+                    keywords: ""
+                };
+
+                //Hide Results Bar
+                $scope.showBar = false;
+
+                //We need to move away details-block or we will loose it when new data arrives
+                $(".details-block").insertAfter('#search-results');
+                $(".details-block").hide();
+
+                //tech
+                $('#title-tech').html('Technology  <em class="arrow"></em>');
+
+                //project
+                $('#title-type').html('Project type <em class="arrow"></em>');
+
+                $scope.search();
+            };
+
+            //Show Type filter items
+            $scope.showTypeItems = function(container) {
+                var contentElms = $('.filter-content'),
+                    filterContent = $('#' + container);
+
+                //Toggle styles
+                $scope.typeActive = !$scope.typeActive;
+                $scope.techActive = false;
+
+                //Show the request content
+                filterContent.slideToggle();
+
+                //Hide others open contents
+                contentElms.not(filterContent).slideUp();
+
+            };
+
+            //Show Technology filter items
+            $scope.showTechItems = function(container) {
+                var contentElms = $('.filter-content'),
+                    filterContent = $('#' + container);
+
+                //Change the title style
+                $scope.techActive = !$scope.techActive;
+                $scope.typeActive = false;
+
+                //Show the request content
+                filterContent.slideToggle();
+
+                //Hide others open contents
+                contentElms.not(filterContent).slideUp();
+
+
+            };
+
+            //Click All Type Filter
+            $scope.setAllType = function() {
+                $scope.params.proyectTypes = [];
+                $scope.search();
+                $('.filter-content').slideUp();
+            };
+
+            //Click All Tech Filter
+            $scope.setAllTech = function() {
+                $scope.params.technologies = [];
+                $scope.search();
+                $('.filter-content').slideUp();
+            };
+
+            //Click on Type Filter item
+            $scope.changeType = function(value, name) {
+
+                $scope.params.proyectTypes = [value];
+                $scope.search();
+
+                $('.filter-content').slideUp();
+
+
+            };
+
+            //Click on Tech Filter item
+            $scope.changeTech = function(value) {
+
+                $scope.params.technologies = [value];
+                $scope.search();
+
+                $('.filter-content').slideUp();
+            };
+
+            //Show More Functionality
+            $scope.showMore = function() {
+                $scope.params.pageNumber = $scope.params.pageNumber + 1;
+                $scope.loadingAnimation = true;
+                $http({
+                    method: "GET",
+                    url: $scope.resultsUrl,
+                    params: $scope.params
+                }).then(function(response) {
+
+                        $scope.projects = $scope.projects.concat(response.data.results);
+                        $scope.loadingAnimation = false;
+
+                        if ($scope.projects.length === response.data.total) {
+                            $scope.moreResults = false;
+                        }
+
+                    },
+                    function(response) {
+                        // console.log("HTTP Error");
+                        // console.log(response);
+                    });
+            };
+
+            //Close Details popup
+            $scope.closeDetailsBlock = function() {
+                $(".details-block").slideUp();
+                $(".triangle-arrow-up").fadeOut();
+                // $("#og-grid").children("li").find("img").removeClass("obscureImage");
+                $scope.projectDetails.id = undefined;
+            };
+
+            //Generate Details Block and Show it below Project thumbnail
+            $scope.showDetails = function(project) {
+
+                // If already shown then close it and return
+                if (($scope.projectDetails) && $scope.projectDetails.id === project.id) {
+                    $scope.closeDetailsBlock();
+                    return;
+                }
+
+                var container = $('#og-grid'),
+                    boxes = container.children('li'),
+                    boxSize = boxes.first().outerWidth(true),
+                    contentSize = container.outerWidth(),
+                    elementsInRow = Math.floor(contentSize / boxSize),
+                    activeBoxPositionNumber = 0,
+                    $selectedElement;
+
+
+                for (var i = 0; i < boxes.length; i++) {
+                    if ($(boxes[i]).data("projectid") === project.id) {
+                        activeBoxPositionNumber = i;
+                        $selectedElement = $(boxes[i]);
+                    }
+                }
+
+                //Is not Index, is position number starting with 1, so we need to add 1
+                activeBoxPositionNumber++;
+
+
+                var activeRow = Math.ceil(activeBoxPositionNumber / elementsInRow),
+                    lastElementInRowIndex = (Math.floor(activeRow * elementsInRow)) - 1;
+
+                //All the above calculations just to get the last box in row to insert the details panel after it
+                var $lastBoxInRowElement = $(boxes[lastElementInRowIndex]),
+                    offsetHeight = $selectedElement.outerHeight(true) * 0.9,
+                    scrolltoheight = $selectedElement.offset().top + offsetHeight,
+                    selectedElement = $selectedElement.offset().top;
+
+                //scroll to image Top
+                if (app.windowsize > 767) {
+                    $('.details-block').ScrollTo();
+                    // $('html, body').animate({
+                    //     scrollTop: selectedElement
+                    // }, 200);
+                } else {
+                    // $('html, body').animate({
+                    //     scrollTop: (selectedElement - 50) 
+                    // }, 200);
+                }
+                console.log(offsetHeight);
+
+
+
+                //hide if it was previously shown
+                $(".details-block").hide();
+                $(".triangle-arrow-up").hide();
+
+
+
+                //get Project Details vis AJAX and fill up the details-block Before inserting it
+                $http({
+                    method: "GET",
+                    url: "../ProjectAjax/Get?idProject=" + project.id
+                })
+                    .success(function(data) {
+
+                        // console.log(data);
+
+                        //Injecting the new details so the details block can be populated via Angujar
+                        $scope.projectDetails = data;
+
+                        //insert after Last box in row always
+                        $(".details-block").insertAfter($lastBoxInRowElement);
+
+                        //Preparing Slick Slider
+                        //Destroying previously Sliders
+                        if ($('.og-fullimg').hasClass('slick-initialized')) {
+                            $('.og-fullimg').slick('unslick');
+                        }
+                        $('.og-fullimg').empty();
+                        $('.og-slider-dots').empty();
+
+                        //If Project has more than one image the initialized Slick Slider
+                        if (data.image_large.length > 1) {
+
+                            //For each Slider Image create the HTML
+                            data.image_large.forEach(function(largeUrl) {
+                                //Add image to Slick and dots
+                                $('.og-fullimg').append('<div><img src="' + largeUrl + '" /></div>');
+                                $('.og-slider-dots').append('<li><button></button></li>');
+                            });
+
+                            //Init slider
+                            $('.og-fullimg').slick({
+                                // lazyLoad: 'progressive',
+                                // prevArrow: '<button type="button" class="slick-prev"></button>',
+                                // nextArrow: '<button type="button" class="slick-next"></button>'
+                                arrows: false,
+                                lazyLoad: 'ondemand',
+                            });
+
+                            //Dots custom logic
+                            //dots array used in the next 2 functions
+                            var dots = $('.og-slider-dots').children('li');
+
+                            //bind dots click events
+                            dots.on('click', function() {
+                                var slideToGoIndex = $.inArray(this, dots);
+                                $('.og-fullimg').slick('slickGoTo', slideToGoIndex);
+                            });
+
+                            //update dots when using arrows or swiping
+                            $('.og-fullimg').on('afterChange', function(slick, currentSlide) {
+                                dots.removeClass("active");
+                                $(dots[currentSlide.currentSlide]).addClass("active");
+                            });
+
+                            //Start in slide 0
+                            $('.og-fullimg').slick('slickGoTo', 0);
+
+                        } else {
+                            //Project has only one image
+                            $('.og-fullimg').append('<div><img src="' + data.image_large[0] + '" /></div>');
+                        }
+
+                        //Fill up Technologies and Social Icons
+                        $('.detail-techs').empty();
+                        $('.detail-social').empty();
+                        //For each Technology
+                        data.technologies_img.forEach(function(techUrl) {
+                            //Add image
+                            $('.detail-techs').append('<img src="' + techUrl + '" />');
+                        });
+                        //For each ScreenSupport
+                        data.category_img.forEach(function(catUrl) {
+                            //Add image
+                            $('.detail-techs').append('<img src="' + catUrl + '" />');
+                        });
+                        //For each Social
+                        if (data.social_img && data.social_img.length > 0) {
+                          data.social_img.forEach(function(socialUrl) {
+                            //Add image
+                            $('.detail-social').append('<img src="' + socialUrl + '" />');
+                          });
+                          $('.social-media-container').show();
+                        }
+                        else
+                        {
+                            $('.social-media-container').hide();
+                        }
+
+
+                        //Finally show the details-block and custom triangle Arrow
+                        $('.details-block').slideDown();
+                        $selectedElement.addClass('active');
+                        $selectedElement.find('.triangle-arrow-up').fadeIn();
+
+                    })
+                    .error(function(err) {
+                        console.log("HTTP Error: ");
+                        console.log(err);
+                    });
+
+            };
+
+           
+            var header = $('header'),
+                headerHeight = header.outerHeight(true),
+                filtersNav = $('#form-filters'),
+                filtersNavPosition = filtersNav.offset().top - 250;
+
+
+            $(window).scroll(function () {
+                if (app.windowsize > 767 && $(this).scrollTop() > 30) {
+                    header.addClass("sticky");
+                } else {
+                    header.removeClass("sticky");
+                }
+
+                if ($(this).scrollTop() > filtersNavPosition) {
+                    filtersNav.addClass("sticky");
+                    if (app.windowsize > 767) {
+                        filtersNav.css('top', headerHeight);
+                    }                    
+                } else {
+                    filtersNav.removeClass("sticky");
+                    if (app.windowsize > 767) {
+                        filtersNav.css('top', 0);
+                    }
+                }
+            });
+
+            $('.filter-content ul li span').on('click', function(){
+                var name = $(this).text(),
+                    listName = $(this).parent().parent().parent().siblings('.filter-title');
+
+                    listName.html(name + '<em class="arrow"></em>');
+            });
+
+
+
+
+
+
+        }
+    ]);
+
+}(jQuery));

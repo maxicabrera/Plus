@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectModel>
+@{
+    ViewBag.Title = "Project";
+    Layout = "~/Areas/Admin/Views/Shared/_emptyLayout.cshtml";
+    var entityName = "Project";
+    var tab1Title = string.Format("List {0}", entityName);
+    var tab2Title = string.Format("Add/Edit {0}", entityName);
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.PartnerModel> partners = ViewBag.partners;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ClientModel> clients = ViewBag.clients;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectCategoryModel> categories = ViewBag.categories;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.TechnologyModel> technologies = ViewBag.technologies;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.SocialMediaModel> socialMedia = ViewBag.socialMedia;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectTypeModel> projectType = ViewBag.projectType;   
+}
+@section MainContent{
+    <h2>@ViewBag.Title</h2>
+    <p>
+        <a href="#addedit" role="button" data-toggle="modal" class="btn btn-inverse" onclick="javascript:reloadCreate(); return false;">Add New</a>
+        <a href="#bulkDelete" role="button" data-toggle="modal" class="btn btn-delete btn-inverse btn-toogle hide"
+            onclick="javascript:bulkDelete('tblProjects', 'Project'); return false;">Delete</a>
+    </p>
+    <table cellpadding="0" cellspacing="0" border="0" class="display" id="tblProjects">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    <select id="fltClients" class="custom-filter">
+                        <option value="-1">All</option>
+                        @if (clients != null && clients.Any())
+                        {
+                            foreach(var c in clients)
+                            {
+                                <option value="@c.IdClient">@c.Name</option>
+                            } 
+                        }
+                    </select>
+                </th>
+                <th>
+                    <select id="fltPartners" class="custom-filter">
+                        <option value="-1">All</option>
+                        @if (partners != null && partners.Any())
+                        {
+                            foreach(var p in partners)
+                            {
+                                <option value="@p.IdPartner">@p.Name</option>
+                            } 
+                        }
+                    </select>
+                </th>
+                <th>
+                    <select id="fltCategories" class="custom-filter">
+                        <option value="-1">All</option>
+                        @if (categories != null && categories.Any())
+                        {
+                            foreach(var c in categories)
+                            {
+                                <option value="@c.IdProjectCategory">@c.Name</option>
+                            } 
+                        }
+                    </select>
+                </th>
+                <th>
+                    <select id="fltProjectType" class="custom-filter">
+                        <option value="-1">All</option>
+                        @if (projectType != null && projectType.Any())
+                        {
+                            foreach(var pt in projectType)
+                            {
+                                <option value="@pt.IdProjectTypeTag">@pt.Name</option>
+                            } 
+                        }
+                    </select>
+                </th>
+                <th>
+                    <select id="fltTechnologies" class="custom-filter">
+                        <option value="-1">All</option>
+                        @if (technologies != null && technologies.Any())
+                        {
+                            foreach(var t in technologies)
+                            {
+                                <option value="@t.IdTechnology">@t.Name</option>
+                            } 
+                        }
+                    </select>
+                </th>
+                <th>
+                    <select id="fltSocialMedia" class="custom-filter">
+                        <option value="-1">All</option>
+                        @if(socialMedia!=null && socialMedia.Any())
+                        {
+                            foreach(var s in socialMedia)
+                            {
+                                <option value="@s.IdSocialMedia">@s.Name</option>
+                            }
+                        }
+                    </select>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+}
+@section JavaScript
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            initPages('Project', '@entityName', '@tab1Title', '@tab2Title');
+            Reload();
+        });
+
+        var columns = [
+                { "sTitle": "<input type='checkbox' name='selectAll' id='selectAll' onclick='javascript:selectAllAjax(\"tblProjects\");' />", "bSortable": false, "sWidth": "35px", "bSearchable": false },
+                { "sTitle": 'Name', "bSortable": true },
+                { "sTitle": 'Client', "bSortable": true },
+                { "sTitle": 'Partner', "bSortable": true },
+                { "sTitle": 'Category', "bSortable": false },
+                { "sTitle": 'Project Type(s)', "bSortable": false },
+                { "sTitle": 'Technologies', "bSortable": false },
+                { "sTitle": 'Social Media', "bSortable": false }
+        ]
+
+        function Reload() {
+            var client = $("#fltClients").val();
+            var partner = $("#fltPartners").val();
+            var category = $("#fltCategories").val();
+            var projectType = $("#fltProjectType").val();
+            var technology = $("#fltTechnologies").val();
+            var socialMedia = $("#fltSocialMedia").val();           
+
+            var url = "/Admin/Project/GetAll?client=" + client + "&partner=" + partner
+                                                         + "&category=" + category
+                                                         + "&projectType=" + projectType
+                                                         + "&technology=" + technology
+                                                         + "&socialMedia=" + socialMedia;
+
+            loadTableContentAjax("tblProjects", url, columns);
+        }
+
+    </script>
+}

@@ -1,0 +1,450 @@
+﻿@model Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectModel
+@{
+    ViewBag.Title = "Edit Project";
+    Layout = Request.IsAjaxRequest() || ViewContext.Controller.ControllerContext.IsChildAction ? "~/Areas/Admin/Views/Shared/_emptyLayout.cshtml" : "~/Areas/Admin/Views/Shared/_AdminMaster.cshtml";
+    var entityName = "Project";
+    var tab1Title = string.Format("List {0}", entityName);
+    var tab2Title = string.Format("Add/Edit {0}", entityName);
+    IEnumerable<SelectListItem> years = ViewBag.years;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.PartnerModel> partners = ViewBag.partners;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ClientModel> clients = ViewBag.clients;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectCategoryModel> categories = ViewBag.categories;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.TechnologyModel> technologies = ViewBag.technologies;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.SocialMediaModel> socialMedia = ViewBag.socialMedia;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ScreenSupportModel> screensupport = ViewBag.screensupport;
+    List<Plus54PortfolioRedesign2014.Web.Admin.Models.ProjectTypeModel> projectType = ViewBag.projectType;  
+}
+@section AjaxJavascriptInclude{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/css/FileUpload")
+    @Scripts.Render("~/bundles/FileUpload")
+}
+@section JavaScript{
+    @Scripts.Render("~/bundles/ProjectJS")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            initPages('Project', '@entityName', '@tab1Title', '@tab2Title');
+            initFileUpload('projectForm', createProject, '@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.UploaderHandlerFolder?folderType=@Plus54PortfolioRedesign2014.Web.AppCode.Helpers.FolderPath.Project',@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.AllowImagesExtensions,1,null,655360);
+            initFileUpload('projectLogoForm', createProjectSiteLogo, '@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.UploaderHandlerFolder?folderType=@Plus54PortfolioRedesign2014.Web.AppCode.Helpers.FolderPath.Project',@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.AllowImagesExtensions,1,null,655360);
+            initFileUpload('projectSliderImagesForm', createProjectSliderImages, '@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.UploaderHandlerFolder?folderType=@Plus54PortfolioRedesign2014.Web.AppCode.Helpers.FolderPath.Project',@Plus54PortfolioRedesign2014.Web.Properties.Settings.Default.AllowImagesExtensions,10,null,655360);
+        
+            $("#btnSave").click(function (e) { e.preventDefault(); });
+            $("#btnSaveLogo").click(function (e) { e.preventDefault(); });
+
+            $("#btnSaveSliderImages").click(function (e) {
+                e.preventDefault();
+
+                //TODO: validate
+                //if($("#fSiteLogo").parent().next().children("div.template-upload").size() > 0)
+                //{
+                //    $("#btnSaveSubmitLogo").click();
+                //}
+                //else
+                //    createProjectSiteLogo($("#projectLogoForm"), null);
+
+                if($("#fSliderImages").parent().next().children("div.template-upload").size() > 0)
+                {
+                    $("#SliderImagesCount").val($("#fSliderImages").parent().next().children("div.template-upload").size()/2);
+                    $("#btnSaveSubmitSliderImages").click();
+                }   
+                else
+                    createProjectSliderImages($("#projectSliderImagesForm"), null);
+
+
+                if ($("#fThumbnail").parent().next().children("div.template-upload").size() > 0)
+                    $("#btnSaveSubmit").click();
+                else
+                    createProject($("#projectForm"), null);                                   
+            });
+            
+            $(".slider-image.remove").click(function(){   
+                var di = $("input[name='deletedImages']").val();
+
+                if(di.indexOf($(this).attr("data-url")) < 0)
+                    $("input[name='deletedImages']").val(di.concat("|").concat($(this).attr("data-url")));
+            });
+
+            $(".slider-image.undo").click(function(){     
+                var di = $("input[name='deletedImages']").val();
+                di = di.replace("|".concat($(this).attr("data-url")),"");
+                $("input[name='deletedImages']").val(di)
+            });
+
+            $(":text").live('keypress', function (event) {
+                if (event.charCode === 60 || event.charCode === 62 || event.charCode === 43) {
+                    event.preventDefault();
+                }
+            });
+
+            $('#ClientName').typeahead({
+                source: function (query, process) {
+                    clients = [];
+                    map = {};
+                    
+                    var data = @Html.Raw(Json.Encode(clients));                   
+                    
+                    $.each(data, function (i, client) {
+                        map[client.Name] = client.IdClient;
+                        clients.push(client.Name);
+                    });
+ 
+                    process(clients);
+                },
+                updater: function (item) {
+                    selectedClient = map[item].Name;
+                    return item;
+                },
+                matcher: function (item) {
+                    if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+                        return true;
+                    }
+                },
+                sorter: function (items) {
+                    return items.sort();
+                },
+                highlighter: function (item) {
+                    var regex = new RegExp( '(' + this.query + ')', 'gi' );
+                    return item.replace( regex, "<strong>$1</strong>" );
+                },
+            });
+
+            $('#PartnerName').typeahead({
+                source: function (query, process) {
+                    partners = [];
+                    map = {};
+                    
+                    var data = @Html.Raw(Json.Encode(partners));         
+                    $.each(data, function (i, partner) {
+                        map[partner.Name] = partner.IdPartner;
+                        partners.push(partner.Name);
+                    });
+ 
+                    process(partners);
+                },
+                updater: function (item) {
+                    selectedPartner = map[item].Name;
+                    return item;
+                },
+                matcher: function (item) {
+                    if (item.toLowerCase().indexOf(this.query.trim().toLowerCase()) != -1) {
+                        return true;
+                    }
+                },
+                sorter: function (items) {
+                    return items.sort();
+                },
+                highlighter: function (item) {
+                    var regex = new RegExp( '(' + this.query + ')', 'gi' );
+                    return item.replace( regex, "<strong>$1</strong>" );
+                },
+            });
+
+            $('.selectpicker').selectpicker();
+
+            setChosens();
+        });
+    </script>
+}
+@section MainContent{
+    <h2>@ViewBag.Title</h2>
+    <form id="projectForm" action="/Admin/Project/Edit" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+            <div id="legend">
+                <legend>Edit Project</legend>
+            </div>
+            <div id="errorPlaceHolder" style="display: none;">
+                @Html.ValidationSummary()
+            </div>
+            @Html.Hidden("deletedImages")
+            @Html.HiddenFor(model => model.IdProject)
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Name)
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.Name, new { @class = "span9", placeholder = "Project Name" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Overview)
+                <div class="controls">
+                    @Html.TextAreaFor(model => model.Overview, new { cols = 105, @rows = 9, @class = "span9", placeholder = "Project Overview" })
+                    @Html.ValidationMessageFor(model => model.Overview)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Category)
+                <select id="Category" name="Category" class="selectpicker" multiple title="">
+                    @{
+                        if (categories != null)
+                        {
+                            foreach (var c in categories)
+                            {
+                                if (Model.Category.Contains(c.IdProjectCategory))
+                                {
+                                    <option value="@c.IdProjectCategory" selected>@c.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@c.IdProjectCategory">@c.Name</option>
+                                }
+                            }
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Category)
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Technologies)
+                <select id="Technologies" name="Technologies" class="selectpicker" multiple title="">
+                    @{
+                        if (technologies != null)
+                        {
+                            foreach (var t in technologies)
+                            {
+                                if (Model.Technologies.Contains(t.IdTechnology))
+                                {
+                        <option value="@t.IdTechnology" selected>@t.Name</option>  
+                                }
+                                else
+                                {
+                        <option value="@t.IdTechnology">@t.Name</option>      
+                                }
+                            }
+                        } 
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.Technologies)
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.SocialMedia)
+                <select id="SocialMedia" name="SocialMedia" class="selectpicker" multiple title="">
+                    @{
+                        if (socialMedia != null)
+                        {
+                            foreach (var s in socialMedia)
+                            {
+                                if (Model.SocialMedia.Contains(s.IdSocialMedia))
+                                {
+                        <option value="@s.IdSocialMedia" selected>@s.Name</option>  
+                                }
+                                else
+                                {
+                        <option value="@s.IdSocialMedia">@s.Name</option> 
+                                }
+
+                            }
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.SocialMedia)
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.ScreenSupport)
+                <select id="ScreenSupport" name="ScreenSupport" class="selectpicker" multiple title="">
+                    @{
+                        if (screensupport != null)
+                        {
+                            foreach (var s in screensupport)
+                            {
+                                if (Model.ScreenSupport.Contains(s.IdScreenSupport))
+                                {
+                                    <option value="@s.IdScreenSupport" selected>@s.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@s.IdScreenSupport">@s.Name</option>
+                                }
+
+                            }
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.ScreenSupport)
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.ProjectType)
+                <select id="ProjectType" name="ProjectType" class="selectpicker" multiple title="">
+                    @{
+                        if (projectType != null)
+                        {
+                            foreach (var p in projectType)
+                            {
+                                if (Model.ProjectType.Contains(p.IdProjectTypeTag))
+                                {
+                        <option value="@p.IdProjectTypeTag" selected>@p.Name</option>  
+                                }
+                                else
+                                {
+                        <option value="@p.IdProjectTypeTag">@p.Name</option>  
+                                }
+
+                            }
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.ProjectType)
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Url)
+                <div class="controls">
+                    @Html.TextBoxFor(model => model.Url, new { @class = "span9", placeholder = "Project Url" })
+                    @Html.ValidationMessageFor(model => model.Url)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.ClientName)
+                <div class="controls">
+                    <input id="ClientName" name="ClientName" type="text" data-val="true" data-val-regex="Client is invalid" data-val-regex-pattern="^[a-zA-Z0-9]+$" data-val-required="Client is required" placeholder="Client Name" class="span9" data-items="5" value="@Html.ValueFor(model => model.ClientName)">
+                    @Html.ValidationMessageFor(model => model.ClientName)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.PartnerName)
+                <div class="controls">
+                    <input id="PartnerName" name="PartnerName" type="text" data-val="true" data-val-regex="Partner is invalid" data-val-regex-pattern="^[a-zA-Z0-9]+$" data-val-required="Partner is required" placeholder="Partner Name" class="span9" data-items="5" value="@Html.ValueFor(model => model.PartnerName)">
+                    @Html.ValidationMessageFor(model => model.PartnerName)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.Year)
+                <div class="controls">
+                    @if (years != null && years.Any())
+                    {
+                        var li = years.Where(y => y.Value.Equals(Model.Year.ToString())).FirstOrDefault();
+                        if (li != null) { li.Selected = true; }
+                        
+                        @Html.DropDownListFor(model => model.Year, years, new { @class = "span9", placeholder = "Project Year" })
+                        @Html.ValidationMessageFor(model => model.Year)
+                    }
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.ThumbnailPath)
+                <div class="controls">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus icon-white"></i>
+                        <span>Change File</span>
+                        <input id="fThumbnail" type="file" name="files">
+                    </span>
+                    <div class="files row"></div>
+                    <div>
+                        <img style="height: 50px;" src="@Model.ThumbnailPath" />
+                    </div>
+                    @Html.HiddenFor(model => model.ThumbnailPath, new { id = "FileUrl" })
+                </div>
+            </div>
+            <div class="control-group" style="display: none;">
+                <div class="controls fileupload-buttonbar">
+                    <button type="button" class="btn btn-success clickedButton" id="btnSave">Save</button>
+                    <button type="submit" id="btnSaveSubmit" class="btn btn-primary start hide">Save</button>
+                    <input type="button" data-dismiss="modal" onclick="javascript: cancelPage();" value="Cancel" class="btn btn-inverse" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    @*//PORTFOLIO-82*@
+    @*<form id="projectLogoForm" action="/Admin/Project/UploadProjectSiteLogo" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+            <div class="control-group">
+                <div class="controls">
+                    @Html.HiddenFor(model => model.Name, new { @class = "span9", placeholder = "Project Name" })
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.SiteLogoPath)
+                <div class="controls">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus icon-white"></i>
+                        <span>Change File</span>
+                        <input id="fSiteLogo" type="file" name="files">
+                    </span>
+                    <div class="files row"></div>
+                    <div>
+                        <img style="height: 50px;" src="@Model.SiteLogoPath" />
+                    </div>
+                    @Html.HiddenFor(model => model.SiteLogoPath, new { id = "FileUrl" })
+                </div>
+            </div>
+            <div class="control-group" style="display: none;">
+                <div class="controls fileupload-buttonbar">
+                    <button type="button" class="btn btn-success clickedButton" id="btnSaveLogo">Save</button>
+                    <button type="submit" id="btnSaveSubmitLogo" class="btn btn-primary start hide">Save</button>
+                    <input type="button" data-dismiss="modal" onclick="javascript: cancelPage();" value="Cancel" class="btn btn-inverse" />
+                </div>
+            </div>
+        </fieldset>
+    </form>*@
+    <form id="projectSliderImagesForm" action="/Admin/Project/UploadProjectSliderImages" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+            <div class="control-group">
+                <div class="controls">
+                    @Html.HiddenFor(model => model.Name, new { @class = "span9", placeholder = "Project Name" })
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelForRequired(model => model.SliderImages)
+                <div class="controls">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="icon-plus icon-white"></i>
+                        <span>Select File</span>
+                        <input id="fSliderImages" type="file" name="files">
+                    </span>
+                    <div class="files row"></div>
+                    <div>
+                        @foreach(var sliderImage in Model.SliderImages)
+                        {
+                            <img style="height: 50px;" src="@sliderImage" />
+                            <a style="cursor:pointer;" class="slider-image remove" data-url="@sliderImage">Remove</a>
+                            <a style="cursor:pointer;" class="slider-image undo" data-url="@sliderImage">Undo</a>
+                        }                        
+                    </div>
+                    @Html.HiddenFor(model => model.SliderImages, new { id = "FileUrl", @Value = ""})  
+                    <input id="SliderImagesCount" name="SliderImagesCount" type="hidden" value="0">            
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls fileupload-buttonbar">
+                    <button type="button" class="btn btn-success clickedButton" id="btnSaveSliderImages">Save</button>
+                    <button type="submit" id="btnSaveSubmitSliderImages" class="btn btn-primary start hide">Save</button>
+                    <input type="button" data-dismiss="modal" onclick="javascript: cancelPage();" value="Cancel" class="btn btn-inverse" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <!-- The template to display files available for upload -->
+    <script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <div class="template-upload fade">
+        <span>{%=file.name%}</span>
+        <span>{%=o.formatFileSize(file.size)%}</span>
+    </div>
+    <div class="template-upload fade">
+        {% if (file.error) { %}
+            <div class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</div>
+        {% } else if (o.files.valid && !i) { %}
+            <div>
+                <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+            </div>
+            <div class="start">{% if (!o.options.autoUpload) { %}
+                <button class="btn btn-primary hide">
+                    <i class="icon-upload icon-white"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            {% } %}</div>
+        {% } else { %}
+            <td colspan="2"></td>
+        {% } %}
+        <div class="cancel">{% if (!i) { %}
+            <button class="btn btn-warning">
+                <i class="icon-ban-circle"></i>
+                <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+        {% } %}</div>
+    </div>
+{% } %}
+    </script>
+    <!-- The template to display files available for download -->
+    <script id="template-download" type="text/x-tmpl">                    
+    </script>
+}
+

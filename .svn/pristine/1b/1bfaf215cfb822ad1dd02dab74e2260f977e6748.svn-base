@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Plus 54 | Porfolio - @ViewBag.Title</title>
+    <script type="text/javascript">
+        var tempText = 'Save';
+    </script>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/css/bootstrap")
+    @Styles.Render("~/css")
+    @Styles.Render("~/css/chosen")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/DataTable")
+    @Scripts.Render("~/bundles/MiscJS")
+    @Scripts.Render("~/bundles/Chosen")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

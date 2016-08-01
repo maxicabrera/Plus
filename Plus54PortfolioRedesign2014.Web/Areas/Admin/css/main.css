@@ -1,0 +1,607 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+body
+{
+    overflow-x: hidden;
+}
+
+.row-fluid .span9 { width: 980px !important;}
+.btn .caret { margin-left: -1px !important;}
+.navbar-inverse .nav a { height: 40px; line-height: 40px;}
+.navbar-inverse .nav a.active, .navbar-inverse .nav a.active:hover { background-color: #257CA8 !important; color: #FFFFFF !important;}
+.pull-right span { color: #000000;  margin: 10px 10px 0 0;}
+.navbar-inverse .nav li.dropdown > .dropdown-toggle .caret { margin-top: 17px;}
+.pull-right .dropdown-toggle { margin-top: -10px;}
+.home .navbar-inverse { z-index: 9999;}
+.home #spinner { margin-top: 41px !important; }
+.btn-group > .btn + .dropdown-toggle { width: 20px;}
+
+.navbar-inverse .nav .dropdown-menu li > a { line-height: 30px !important; height: 30px !important;}
+.logo-login
+{
+    margin-top: 80px;
+}
+.logo-login > div
+{
+    overflow: hidden;
+    background-color: #2587BE;
+    background-image: linear-gradient(to bottom, #44C8FF, #115E96);
+    background-repeat: repeat-x;
+    border-color: #98BDD3;
+}
+
+.logo-login > div h1 {
+    line-height: 20px;
+    text-indent: 0px;
+    color: White;
+    font-size: 15px;
+    margin: 0;   
+}
+
+#RememberMe { margin-top: -1px;}
+.logo-image
+{
+    width: 134px;
+    height: 49px;
+}
+
+#menu-left .nav-list a
+{
+    padding: 12px 21px 10px;
+    color: #000;
+}
+#menu-left .nav-list a span
+{
+    border-left: 1px solid #447d85;
+    margin-left: 6px;
+    padding-left: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+#menu-left .nav-list a.active
+{
+    background-color: #61b5e6;
+    text-decoration: none;
+    border-bottom: 1px solid #416f8f;
+}
+#menu-left .nav-list a.last
+{
+    border-bottom: 1px solid #DDDDDD;
+}
+#menu-left .nav-list a.current
+{
+    background-color: #000;
+    color: #FFFFFF;
+    text-shadow: none;
+}
+.icons-only
+{
+    text-align: center;
+}
+
+li.accordion-menu
+{
+    padding: 0;
+}
+li.accordion-menu .accordion-inner
+{
+    padding: 0;
+    border-top: none;
+}
+li.accordion-menu .nav-list
+{
+    margin-left: 0;
+    margin-bottom: 0;
+    background: #548eb0;
+}
+li.accordion-menu .nav-list a
+{
+    margin-right: 0;
+}
+.togglemenuleft
+{
+    background: #222222;
+    text-align: center;
+    cursor: pointer;
+    padding: 6px 0px 3px;
+}
+#widget .accordion-inner.paddind, #section-body .accordion-inner.paddind
+{
+    padding: 10px 20px 0;
+}
+
+#widget
+{
+    padding: 9px 0;
+}
+#widget .table, #section-body .table
+{
+    margin-bottom: 0;
+}
+
+#widget .table td em.ago
+{
+    float: right;
+}
+
+
+#widget a
+{
+    color: #777777;
+}
+#widget a:hover
+{
+    color: #555555;
+    text-decoration: none;
+}
+#widget .accordion-inner
+{
+    padding: 9px 0;
+}
+#widget .accordion-heading .accordion-toggle
+{
+    background: #000;
+    text-shadow: 1px 1px #222222;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+#widget a.accordion-toggle:hover
+{
+    text-decoration: none;
+}
+#widget .divider-vertical
+{
+    border-right: 1px solid #666666;
+    height: 40px;
+    margin: 0 14px 0 9px;
+    overflow: hidden;
+    width: 1px;
+}
+.flickr li
+{
+    float: left;
+    margin: 6px;
+}
+.flickr img
+{
+    border: 3px solid #000;
+    width: 50px;
+}
+#block-top .thumbnails a
+{
+    position: relative;
+}
+#block-top .thumbnails .badge
+{
+    position: absolute;
+    left: -5px;
+    top: -7px;
+}
+#block-top .thumbnails .label
+{
+    position: absolute;
+    left: -5px;
+    top: -7px;
+}
+#block-top .thumbnails li
+{
+    margin-left: 4px;
+    margin-right: 8px;
+    margin-top: 8px;
+}
+
+.brand-list
+{
+    overflow-y: auto;
+    height: 150px;
+    text-align: center;
+}
+
+.selected
+{
+    background-color: #DDDDDD;
+    text-decoration: none;
+}
+.selected a
+{
+    color: #666666;
+    font-weight: bold;
+}
+
+.list-actions
+{
+    width: 60px;
+}
+
+.switch-btns
+{
+    display: block;
+    margin: 0 0 5px;
+}
+
+.field-validation-error
+{
+    display: none;
+}
+.editor
+{
+    height: 200px;
+}
+
+.unread
+{
+    background-color: #eff8fd;
+}
+
+.unread td
+{
+    background-color: transparent !important;
+}
+
+/*overriding bootstrap styles*/
+
+.tab-content
+{
+    overflow: hidden !important;
+}
+
+
+.tab-content table
+{
+    table-layout: fixed;
+}
+.tab-content td
+{
+    overflow: hidden;
+    text-overflow: elipsis;
+}
+
+
+.dataTables_length
+{
+    width: 305px !important;
+    float: right !important;
+}
+
+.dataTables_length select
+{
+    width: 70px !important;
+}
+
+.dataTables_filter
+{
+    float: left !important;
+    text-align: left !important;
+}
+.required
+{
+    padding-right: 5px;
+    color: Red;
+}
+
+.spinner
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: -50px; /* half height of the spinner gif */
+    text-align: center;
+    z-index: 1234;
+    overflow: auto;
+    background-color: Gray;
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+}
+.spinner img
+{
+    position: absolute;
+    top: 15%;
+    left: 25%;
+}
+
+table.dataTable thead th.sortable-none
+{
+    cursor: default !important;
+}
+
+.navbar .brand
+{
+    background: url('../img/plus-logo.png');
+    text-indent: -9999px;
+    width: 170px;
+    color: White;
+    font-size: 15px;
+    text-align: center;
+    overflow: hidden;
+    background-position: -10px;
+    background-size: 100% auto;
+}
+
+.chart
+{
+    height: 300px !important;
+    width: 450px;
+    float: left;
+    text-align: center;
+}
+
+.chart h4 
+{
+    margin-top: 140px;
+}
+
+#ui-datepicker-div
+{
+    display: none;
+}
+
+.data-range
+{
+    color: white;
+    margin-left: 18px;
+}
+
+.data-range input
+{
+    width: 218px;
+}
+
+.data-range a
+{
+    text-decoration: underline;
+    cursor: pointer;
+    color: white;
+}
+
+.ui-daterangepickercontain
+{
+    left: 532px;
+    top: 253px;
+}
+
+
+@media screen and (min-width: 970px) and (max-width: 1326px)
+{
+
+    .navbar .nav
+    {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 400;
+    }
+
+}
+
+.chart-label
+{
+    cursor: pointer;
+    position: relative;
+}
+
+
+.modal-header { padding: 0 7px !important;}
+.modal #tab2 h2 { margin-top: 0 !important; }
+.modal.fade.in {top: 40% !important}
+.navbar-inverse .brand:hover, .navbar-inverse .nav > li > a:hover {color: #eee;}
+
+.ui-daterangepicker { height: 220px; margin-left: -276px; margin-top: -48px; top: 0; }
+.ui-daterangepickercontain .ui-daterangepicker,  .ui-widget-content { width: 151px !important;}
+.ui-daterangepicker ul li { width: 150px;}
+
+.ranges.ui-widget-header { left: 148px; position: absolute; top: -63px; }
+
+.ui-datepicker-inline  { width: 188px !important; }
+
+.navbar .nav > li > a { padding: 0 12px !important;}
+.navbar .nav.pull-right { float: right; margin-bottom: -10px; margin-right: 0; margin-top: 10px; }
+
+.icon-off {margin-right: 2px;}
+.chzn-container-active .chzn-choices { border: none !important; box-shadow: none !important;}
+/*.chzn-container .chzn-drop  { height: 280px !important;}
+.chzn-container .chzn-drop > ul { height: 250px !important;}
+
+.stateChoosen .chzn-container .chzn-drop  { height: 280px !important;} */
+.chzn-container .chzn-results li { padding: 2px 6px !important;}
+
+.form-horizontal .control-group { margin-bottom: 10px !important;}
+
+table.dataTable { width: 974px;}
+table.dataTable td:nth-child(2n+1) { background: #EFF8FD;}  
+table.dataTable .even td:nth-child(2n+1) { background: #D9ECF1;}
+
+/* Icon alerts */
+
+
+.dataTable tr [class^="icon-"], #tblAlerts tr [class*=" icon-"] {   height: 28px; width: 28px; line-height: 28px; overflow: hidden; text-indent: -999px; }
+
+.dataTable tr .icon-sent { background: url(../img/icon-alerts.png) no-repeat 0 -32px;}
+.dataTable tr .icon-error { background: url(../img/icon-alerts.png) no-repeat  0 -81px; }
+.dataTable tr .icon-progress { background: url(../img/icon-alerts.png) no-repeat  0 -6px; }
+.dataTable tr .icon-scheduled { background: url(../img/icon-alerts.png) no-repeat  0 -111px; }
+.dataTable tr .icon-save { background: url(../img/icon-alerts.png) no-repeat  0 -58px; }
+.dataTable tr .icon-updatingscheduled { background: url(../img/icon-alerts.png) no-repeat  0 -142px; }
+.dataTable tr .icon-export-subscribers { background: url(../img/icon-alerts.png) no-repeat scroll 0 -166px transparent; }
+.dataTable tr .icon-sent-canceled {background: url(../img/icon-alerts.png) no-repeat scroll 0 -194px transparent;}
+
+.dataTable select { font-size: 12px !important; height: 24px !important;}
+
+/* toggle filter */
+.dataTables_filter #lblRange { display: none;}
+
+#searchBy { color: #FFFFFF; float: left;  margin-left: 13px; margin-top: 5px; position: absolute; width: 200px; z-index: 20; font-size: 12px; }
+#searchBy a {color: #BADDF1;} 
+#searchBy .active { display: none;}
+#searchBy .Date {display: none;}
+.dataTables_filter label { margin: 10px 0 0 ; width: 260px; }
+.dataTables_length { width: 170px !important; margin-top: 8px; }
+#lblRange input { margin-left: -1px; }
+#lblRange a { margin-top: 0px !important; text-decoration: none;}
+.search { width: 700px !important;}
+.search input { margin-left: -54px; width: 342px !important; }
+#btnDateRange { color: White; cursor: pointer; margin-left: 10px; margin-top: 4px; position: absolute; text-decoration: underline; z-index: 23;} 
+
+#tblUsers_filter label, #tblTerritories_filter label, #tblSegments_filter label, #tblSubscribers_filter label, #tblTAATSM_filter label { display: block; width: 300px;}
+#tblUsers_filter label input, #tblTerritories_filter label input, #tblSegments_filter label input, #tblSubscribers_filter label input, #tblTAATSM_filter label input { margin-left: 0px;}
+
+
+.chzn-container.chzn-container-multi.chzn-with-drop.chzn-container-active { width: 100%;}
+#ulslcSegments, #ulslcTerritories, #ulslcCounties { border: none !important; box-shadow: none !important; background: none !important; margin-top: 10px !important;}
+/*-moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    background-image: linear-gradient(#EEEEEE 1%, #FFFFFF 15%);
+    border: 1px solid #AAAAAA;
+    cursor: text;
+    height: auto !important;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;
+
+
+.chzn-container-active {-moz-box-sizing: border-box;
+    background-color: #FFFFFF;
+    background-image: linear-gradient(#EEEEEE 1%, #FFFFFF 15%);
+    border: 1px solid #AAAAAA;
+    cursor: text;
+    height: auto !important;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100%;}*/
+.slcCounties_chzn { border:1px solid #ccc;}
+
+
+/*** TABLES ***/
+
+table.dataTable td { vertical-align: top;}
+
+/* Alerts */
+
+table.dataTable span { display: block;}
+
+table.dataTable .check { width: 14px !important; }
+table.dataTable .title, table.dataTable .title span { width: 117px  !important; overflow: hidden; }
+table.dataTable .template, table.dataTable .template span { width: 196px !important; overflow: hidden; }
+table.dataTable .date, table.dataTable .date span { width: 67px !important; overflow: hidden; }
+table.dataTable .territory, table.dataTable .territory span { width: 190px !important; overflow: hidden; }
+table.dataTable .segment, table.dataTable .segment span { width: 177px !important; overflow: hidden; }
+table.dataTable .status, table.dataTable .status span { width: 48px !important; overflow: hidden; }
+
+table.dataTable .status input { margin-left:  7px;}
+table.dataTable .status span { margin-left: 11px; }
+
+.ui-state-default .DataTables_sort_icon { display: none;}
+.DataTables_sort_wrapper { padding-right: 7px !important; }
+
+#ui-datepicker-div { width: 211px !important;}
+
+#tblTerritories th { padding-left: 0px !important;}
+
+.code select {width: 70px !important;;}
+.longCode select { width:107px !important;;}
+.taa select {width:156px !important;;}
+.tsm select {width:150px !important;;}
+.countries select {}
+.subscribers div { margin-left: 5px !important;;}
+
+
+.input-append input[class*="span"], .input-append .uneditable-input[class*="span"], .input-prepend input[class*="span"], .input-prepend .uneditable-input[class*="span"], .row-fluid input[class*="span"], .row-fluid select[class*="span"], .row-fluid textarea[class*="span"], .row-fluid .uneditable-input[class*="span"], .row-fluid .input-prepend [class*="span"], .row-fluid .input-append [class*="span"] { width: 250px !important; }
+
+#tblAlerts .template select {margin: 1px 0 0 -33px; width: 211px !important;}
+#tblAlerts .territory select {margin: 1px 0 0 -26px;  width: 207px !important;} 
+#tblAlerts .segment select {margin: -12px 0 0 -100px; position: absolute; width: 191px !important;}
+
+#tblSpotlights .template select {margin-left: -20px;width: 214px !important;}
+#tblSpotlights .territory select { margin-left: -30px; width: 205px !important;} 
+
+#tblTerritories_wrapper .check { width: 7px !important; }
+#tblTerritories_wrapper .code.filter.code { width: 16px !important; }
+#tblTerritories_wrapper .code select { width: 64px !important;}
+#tblTerritories_wrapper .longCode select { width: 99px !important;}
+#tblTerritories_wrapper .taa select { width: 140px !important;}
+#tblTerritories_wrapper .tsm select { width: 142px !important;} 
+#tblTerritories_wrapper .countries select { width: 325px !important;}
+#tblTerritories_wrapper .subscribers > div { font-size: 11px; line-height: 13px; margin-left: 0 !important; padding: 3px 0; }
+table.dataTable thead th div.DataTables_sort_wrapper span {left: -12px !important;}
+
+/* datatableChannel */
+ 
+#tblSpotlights .datatableChannel .ui-state-default.sortable-none, #tblAlerts .datatableChannel .ui-state-default.sortable-none ,#tblNewsletters_wrapper .datatableChannel .ui-state-default.sortable-none{ width: 15px;}
+.datatableChannel .ui-state-default.sortable-none > div { margin-left: -22px;}
+.datatableChannel .status, .datatableChannel .status span {width: 22px !important; overflow: auto;}
+
+table.datatableChannel thead th div.DataTables_sort_wrapper span {left: -6px !important;}
+
+table.datatableChannel .date, table.datatableChannel .date span { padding-bottom: 0 3px;}
+
+.chzn-results { /*height: 150px !important;*/ z-index: 9999;}
+.chzn-container > ul { border: 1px solid #aaa;}
+
+.btn, .btn.btn-inverse { height: 19px; line-height: 19px;}
+input.btn, button.btn { height: 27px !important;}
+
+.files {float: left; margin:10px 0 0 2px; width: 100%;}
+.files .template-upload .cancel { float: left; margin-left: 210px; margin-top: -42px; position: absolute;}
+.files .template-upload .cancel .btn.btn-warning { background: url("../img/icon-alerts.png") no-repeat scroll 0 -195px transparent !important; text-indent: -999px;}
+.files .template-upload .cancel .btn.btn-warning i { display: none;}
+
+#taaTsmCreateForm #Title { width: 250px;}
+
+
+
+.bootstrap-datetimepicker-widget {margin-top: 265px !important;}
+
+.nicEdit-pane input { width: 170px !important; float: left !important;} 
+.nicEdit-pane label { margin: 5px !important; padding: 3px 0; width: 60px !important; float: left !important; }
+
+.nicEdit-pane select {  width: 185px !important;}
+
+.nicEdit-pane input[type="submit"] {  background-color: #61B5E6;  background-image: -moz-linear-gradient(center top , #61B5E6, #61B5E6); background-repeat: repeat-x; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); color: #FFFFFF; float: left; margin-left: 70px !important; padding: 4px; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); width: 110px !important; } 
+
+.nicEdit-pane input[type="submit"]:hover { background-color: #548EB0 !important; background-position: 0 -15px; color: #eee; text-decoration: none; transition: background-position 0.1s linear 0s; }
+
+.fileupload-buttonbar .btn, .fileupload-buttonbar .toggle { margin-bottom: 40px  !important;}
+
+.show-grid [class*="span"] {
+    background-color: #EEEEEE;
+    border:1px solid #000000;
+    line-height: 40px;
+    min-height: 40px;
+    text-align: center;
+    text-transform:uppercase;
+}
+
+/* Arenas CRUD */
+
+.sponsor-field
+{
+    display: none;
+}
+
+/* Create Arena*/
+.modal-body .controls
+{
+    margin: 0 !important;
+}
+
+.control-group > p.small-text {
+    float: left;
+    margin-left: 180px;
+    width: 80%;
+    font-size: 11px;
+    margin: 3px;
+    color: #FF0000;
+}
+
+.custom-filter {
+    width: 100%;
+    height: 30px;
+}
